@@ -1,187 +1,293 @@
-# Demo Agéntica de Copilot
+<div align="center">
+  <img src="./assets/header.png" alt="GitHub Copilot - Programa de Adopción" width="100%" />
 
-Esta capacitación práctica te ayudará a familiarizarte con las potentes herramientas agénticas de GitHub, tales como: Copilot Coding Agent y GitHub Copilot Code Review; además, cubriremos espacios de documentación personalizados utilizando GitHub Copilot Spaces.
+  # Sesión Sobre Capacidades Agénticas de GitHub Copilot
 
-Para obtener más información sobre estas herramientas, puedes consultar los enlaces de documentación a continuación.
+  [![GitHub Copilot](https://img.shields.io/badge/GitHub_Copilot-000000?style=for-the-badge&logo=githubcopilot&logoColor=white)](https://github.com/features/copilot)
+  [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+  [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+</div>
 
-- [Coding Agent](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/use-copilot-agents/coding-agent)
-- [Copilot Spaces](https://docs.github.com/en/copilot/how-tos/provide-context/use-copilot-spaces)
-- [Code Review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review)
+---
 
-## 🚀 Ejecutar la aplicación.
+**Esta capacitación** práctica te ayudará a familiarizarte con las potentes herramientas agénticas de GitHub, tales como: **Copilot Coding Agent**, **Custom Agents**, **Agent Skills**, **Mission Control** y **GitHub Copilot Code Review**; además, cubriremos espacios de documentación personalizados utilizando **GitHub Copilot Spaces**.
 
-Para poner en marcha esta aplicación, consulta la página [about](./about.md). Contiene los pasos y requisitos necesarios para ejecutar esta aplicación localmente.
+> Para obtener más información sobre estas herramientas, consulta la documentación oficial:
+>
+> - [Coding Agent](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/use-copilot-agents/coding-agent)
+> - [Custom Agents](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-custom-agents)
+> - [Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+> - [Extend Copilot Chat with MCP](https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/extend-copilot-chat-with-mcp)
+> - [Mission Control](https://github.blog/changelog/2025-10-28-a-mission-control-to-assign-steer-and-track-copilot-coding-agent-tasks/?utm_source=blog-day1-recap-mission-control-cta&utm_medium=blog&utm_campaign=universe25)
+> - [Copilot Spaces](https://docs.github.com/en/copilot/how-tos/provide-context/use-copilot-spaces)
+> - [Code Review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review)
 
-## 📔 Ejercicio de Capacitación
+---
 
-### 🧠 Paso 1. Uso de Copilot Coding Agent (Parte 1).
+## 📋 Tabla de Contenidos
 
-Para contextualizar los cambios que vamos a realizar, el objetivo aquí es cambiar los colores de acento de la aplicación Todo-List. Actualmente, la aplicación se ve así:
+1. [🚀 Ejecutar la aplicación](#-ejecutar-la-aplicación)
+2. [🧠 Paso 1. Uso de Copilot Coding Agent (Parte 1)](#-paso-1-uso-de-copilot-coding-agent-parte-1)
+    - [Desde un Issue](#1-desde-un-issue-📝)
+    - [Desde Mission Control](#2-desde-mission-control-🎛️)
+    - [Desde la pestaña Agents](#3-pestaña-agents-en-el-repositorio-📂)
+    - [Delegando desde el IDE](#4-delegando-desde-el-ide-💻)
+3. [🤖 Agentes personalizados](#-agentes-personalizados)
+4. [🛠️ Agent Skills](#️-agent-skills)
+5. [🪐 Paso 2. Uso de GitHub Copilot Spaces](#-paso-2-uso-de-github-copilot-spaces)
+6. [🧠 Paso 3. Uso de GitHub Copilot Coding Agent (Parte 2)](#-paso-3-uso-de-github-copilot-coding-agent-parte-2)
+7. [👀 Paso 4. GitHub Copilot Code Review](#-paso-4-github-copilot-code-review)
+
+---
+
+## 🚀 Ejecutar la aplicación
+
+Para poner en marcha esta aplicación tienes dos opciones disponibles:
+
+1.  **Ejecución Manual:** Consulta la página [about](./about.md), donde encontrarás los pasos y requisitos necesarios para ejecutar esta aplicación localmente paso a paso.
+2.  **Asistencia de Copilot Agent:** Puedes solicitarle al agente que se encargue de la ejecución. Abre el chat en tu editor en modo agente y utiliza un prompt como el siguiente:
+
+    > "Analiza la estructura del proyecto y ejecuta los comandos necesarios para levantar la aplicación utilizando Docker Compose."
+
+Esta es una aplicación de **Lista de Tareas (Todo-List)** que se ejecuta utilizando Docker Compose. Consta de dos servicios:
+- **Frontend**: Construido con React.
+- **Backend**: Construido con Node.js y Express.
 
 ![Aspecto predeterminado](./assets/default.png)
+---
 
-Cambiemos ese color de acento azul a uno diferente utilizando **Copilot Coding Agent**.
+## 🧠 Paso 1. Uso de Copilot Coding Agent (Parte 1)
 
-Para crear un nuevo issue, ve a la pestaña de issues en este repositorio.
+El objetivo es **cambiar los colores de acento** de la aplicación Todo-List.
 
-![issues](./assets/issues-1.png)
+**Estado Actual:**
+![Aspecto predeterminado](./assets/default.png)
 
-Una vez en la pestaña de issues, vamos a crear uno nuevo haciendo clic en el botón **New Issue**.
+**Objetivo:** Cambiar el color de acento azul a **verde oscuro**.
 
-Al llegar allí, completa el Título y la descripción. Para el título, utilizaremos este campo para indicar con precisión la acción que queremos lograr con el Coding Agent, en este caso queremos cambiar el color de acento de la aplicación.
+### Métodos para solicitar cambios al Copilot Coding Agent:
 
-Para este ejemplo, utiliza el siguiente texto como título del issue:
+### 1. Desde un Issue 📝
+Esta es la forma más estructurada. Asignas un issue a Copilot y este se encarga del resto. **Este es el método que utilizaremos a continuación.**
 
-**Título del issue**
-```
-Modifica los colores de acento en cada uno de los componentes de la aplicación; el color actual es azul, cámbialo de azul a verde oscuro.
-```
+### 2. Desde Mission Control 🎛️
+Accede a [github.com/copilot/agents](https://github.com/copilot/agents) para gestionar sesiones de agentes a nivel global.
 
-Y si quieres añadir más contexto al agente, completa el campo de descripción para ayudar al agente de IA con más información.
+### 3. Pestaña "Agents" en el Repositorio 📂
+Inicia nuevas tareas específicas para este repositorio sin crear un issue formal desde la pestaña **Agents**.
 
-**Descripción del issue**
-```
-Por favor, ten en cuenta que todos los cambios deben realizarse para ambos aspectos de la aplicación: modo oscuro y modo claro.
-```
+### 4. Delegando desde el IDE 💻
+Pide a Copilot directamente en VS Code o Visual Studio que realice tareas complejas.
 
-**Ejemplo**
-![Issue](/assets/issues-2.png)
+---
 
-Una vez completados ambos campos, asigna el issue a GitHub Copilot.
+### **Asignar un Issue a Copilot**
 
-![Copilot-Assign](./assets/copilot-assign.png)
+1. Ve a la pestaña de **Issues** en este repositorio.
 
-Luego guarda el issue. Esto abrirá un nuevo Pull Request en modo borrador (Draft), Copilot marcará este pull request como Trabajo en Progreso (WIP) y comenzará a realizar un análisis y una estrategia para completar la tarea.
+   ![issues](./assets/issues-1.png)
 
-**Issue Asignado a Copilot**
+2. Haz clic en **New Issue**.
+3. Completa el **Título** con la acción precisa:
+
+   ```text
+   Modifica los colores de acento en cada uno de los componentes de la aplicación; el color actual es azul, cámbialo de azul a verde oscuro.
+   ```
+
+4. Completa la **Descripción** con contexto adicional:
+
+   ```text
+   Por favor, ten en cuenta que todos los cambios deben realizarse para ambos aspectos de la aplicación: modo oscuro y modo claro.
+   ```
+
+   **Ejemplo:**
+   ![Issue](/assets/issues-2.png)
+
+5. En el panel lateral derecho, asigna el issue a **GitHub Copilot**.
+
+   ![Copilot-Assign](./assets/copilot-assign.png)
+
+6.  Haz clic en **Submit New Issue**.
+
+> [!NOTE]
+> Copilot abrirá un nuevo Pull Request (Draft), lo marcará como **Trabajo en Progreso (WIP)** y comenzará a analizar la tarea. Observa el emoji 👀 indicando que Copilot está trabajando.
 
 ![Assigned issue](./assets/issues-3.png)
 
-> 💡 **Consejo**.
-> Observa el emoji de los ojos (👀), esto significa que Copilot está al tanto del issue y comenzará a trabajar.
-> Además, nota cómo el PR se crea como borrador y se marca como Trabajo en Progreso (WIP).
+---
 
-Este proceso de Copilot realizando cambios puede tomar tiempo dependiendo de los cambios solicitados; mientras tanto, exploremos **GitHub Copilot Spaces**.
+### **Asignar mediante Mission Control**
 
-### 🪐 Paso 2. Uso de GitHub Copilot Spaces.
+1. Ve a [github.com/copilot/agents](https://github.com/copilot/agents).
+2. Selecciona el repositorio, la rama y el agente (Copilot).
+3. Utiliza el siguiente prompt:
 
-Copilot Spaces es una funcionalidad que proporciona un espacio "centralizado" donde el contexto puede ser personalizado y compartido con los miembros de una organización. Es una forma eficiente de compartir no solo conocimientos, sino también de centralizar la documentación.
+   ```text
+   Agrega una nueva funcionalidad que permita al usuario asignar una categoría predefinida a cada tarea al momento de su creación.
+   Las categorías predefinidas son: Low, Medium y High. Esta funcionalidad debe incluir un menú desplegable en el formulario de creación de tareas, donde el usuario pueda seleccionar la categoría correspondiente. Además, cada categoría debe estar asociada a un color específico para facilitar su identificación visual en la lista de tareas.
+   ```
 
-En este ejercicio, veremos cómo podemos usar GitHub Copilot para generar documentación sobre esta aplicación y luego ponerla disponible a través de Copilot Spaces.
+4. Haz clic en asignar.
 
-#### 2.1 Crear documentación.
+   ![Assigned issue](./assets/assign-task-mission-control.png)
 
-Utiliza GitHub Copilot dentro de tu editor de código para crear archivos de documentación para este proyecto.
+---
 
-Primero, creemos una nueva rama en el repositorio llamada `copilot-spaces-branch`.
+### **Asignar desde la pestaña "Agents" del repositorio**
 
-```
-git checkout -b copilot-spaces-branch
-```
+1. Ve a la pestaña **Agents** en tu repositorio.
+2. Crea una nueva tarea con el siguiente prompt:
 
-Verifica que estás en esa rama usando el siguiente comando.
+   ```text
+   Agrega una nueva funcionalidad que permita habilitar la modificación de los datos de una tarea ya creada (título). Esta funcionalidad debe incluir un botón de edición junto a cada tarea en la lista, que al hacer clic permita al usuario modificar el título de la tarea. Además, se debe implementar una validación para asegurarse de que el nuevo título no esté vacío antes de guardar los cambios.
+   ```
 
-```
-git branch
-```
+   ![Assigned issue](./assets/agents-tab.png)
 
-Ahora abre **VS Code**, abre el Chat de GitHub Copilot en modo Agente y utiliza el siguiente prompt para crear los documentos de la aplicación.
+---
 
-**Prompt de Copilot**
-```
-Mejora el archivo #about.md para incluir documentación avanzada del proyecto. Incluye secciones que indiquen: cuáles son los runtimes y frameworks utilizados, explica detalladamente cómo ejecutar el proyecto y cómo acceder a él a través del navegador. 🌐
+### 🕵️‍♂️ Supervisión e Intervención en Tiempo Real
 
-Utiliza un lenguaje técnico orientado a un público objetivo de Desarrolladores, Sysadmins, Ingenieros DevOps e Ingenieros Cloud. 🛠️☁️
+Tanto en Mission Control como en la pestaña Agents, tienes control total:
 
-Incluye emojis e iconos cuando sea necesario. ✨
-```
-El Chat de GitHub Copilot comenzará a realizar algunos cambios en el archivo [about](about.md). Verás algo como esto:
+*   **Registro de Sesiones:** Ve en tiempo real las acciones y comandos.
+*   **Intervención Humana:** Intervén en cualquier momento para dar instrucciones o detener al agente.
 
-![About](./assets/Copilot-Improve.png)
+---
 
-Si estás de acuerdo con la sugerencia, simplemente haz clic en el botón "keep".
+### Delegando desde el IDE
 
-Sube los cambios a Github ejecutando el siguiente comando.
+En **VS Code**, selecciona "cloud" en el chat de Copilot y usa este prompt:
 
-**Añadir los archivos al área de preparación (staging)**
-```
-git add .
+```text
+Agrega funcionalidad que permita al usuario buscar tareas específicas dentro de la lista actual mediante un filtro de texto. Esta funcionalidad debe incluir un campo de búsqueda en la parte superior de la lista de tareas, donde el usuario pueda ingresar palabras clave para filtrar las tareas mostradas. El filtro debe ser dinámico, actualizando la lista de tareas en tiempo real a medida que el usuario escribe, y debe buscar coincidencias en los títulos de las tareas.
 ```
 
-**Confirmar los cambios (commit)**
+![Assigned task](./assets/delegate-task-from-ide.png)
+
+---
+
+## 🤖 Agentes personalizados
+
+GitHub Copilot permite crear agentes con habilidades específicas para tu proyecto.
+
+- **¿Qué son?** Versiones del Agente de Código adaptadas a tus estándares.
+- **Rol:** Miembro del equipo experto en tus herramientas.
+- **Eficiencia:** Configuración única, evita repetir contexto.
+
+### Creación de un Agente Personalizado (Nivel Repositorio):
+
+1. En Copilot Chat, selecciona **Configure Custom Agents...** > **Create new custom agent**.
+2. **Scope:** Selecciona **Workspace** (se guarda en `.github/agents`).
+3. **Nombre:** Asigna un nombre a tu agente.
+
+Revisa la estructura en `/agents`. Copia el agente de ejemplo a `.github/agents` para probarlo. 
+
+**Prompt de ejemplo:**
+Debes seleccionar el agente personalizado en el selector de agentes antes de enviar la siguiente instrucción:
+
+```text
+Migra el frontend actual (Vanilla JS) a React con Vite y actualiza la configuración de Docker.
+
+Tareas de Código:
+1. Refactoriza `frontend/index.html` y `frontend/script.js` en componentes de React (`App`, `TaskList`, `TaskForm`, etc.).
+2. Implementa la gestión de estado con Hooks para replicar la funcionalidad CRUD actual.
+3. Reutiliza `frontend/style.css` para mantener el diseño.
+4. Genera la configuración de Vite (`vite.config.js`).
+
+Tareas de Infraestructura (Docker):
+1. Actualiza `frontend/Dockerfile` para usar una construcción "multi-stage":
+   - Etapa 1 (Build): Usa una imagen de Node para instalar dependencias y ejecutar `npm run build`.
+   - Etapa 2 (Serve): Usa una imagen de Nginx para servir los archivos estáticos generados en la carpeta `dist`.
 ```
-git commit -m "Updated documentation"
+
+---
+
+## 🛠️ Agent Skills
+
+Módulos especializados que Copilot activa para resolver tareas complejas.
+
+- **Ubicaciones:** `.github/skills/` (repositorio) o `~/.copilot/skills/` (global).
+- **Archivo:** `SKILL.md` con encabezado YAML e instrucciones.
+
+**Ejercicio:**
+Revisa la carpeta `skills` en la raíz del proyecto. Contiene un skill de ejemplo sobre github issues. Una vez revisado, mueve la carpeta `skills` a `.github/skills/`.
+
+**Nota**: En este punto, estaremos usando el MCP server de GitHub para poder crear un issue en GitHub directamente desde el agente personalizado utilizando la habilidad `github-issues`. Para esto, asegúrate de tener configurado el MCP server y de que tu agente personalizado tenga acceso a esta habilidad. Es posible que se solicite iniciar sesión en GitHub para autenticar y poder usar el MCP server.
+
+usa este prompt en VS Code:
+
+```text
+Crea un issue en github que me permita agregar una funcionalidad para ver una card o un texto con la cantidad de tareas pendientes 
 ```
 
-**Subir los cambios al repositorio Git (push)**
-```
-git push
-```
+El modo agente detectará la intención de crear un issue y activará la habilidad `github-issues` para ejecutar esta tarea. Verás que el agente genera el issue automáticamente con la estructura y formato adecuado.
 
-#### 2.2 Creación de un entorno de Copilot Spaces.
+---
 
-Para esta parte, ve a [GitHub](https://github.com). Aquí debes abrir el menú de la barra lateral y hacer clic en la opción **Copilot**. Mira la siguiente imagen para más detalles.
+## 🪐 Paso 2. Uso de GitHub Copilot Spaces
 
-![copilot-menu](./assets/copilot-menu.png)
+Copilot Spaces centraliza el contexto y documentación para tu equipo.
 
-Esto abrirá la interfaz web de GitHub Copilot; aquí haz clic en el botón "Spaces", lo cual abrirá GitHub Copilot Spaces.
+### 2.1 Crear documentación
 
-![copilot-spaces](./assets/Copilot-Spaces.png)
+1. Crea una rama: `git checkout -b copilot-spaces-branch`
+2. En Copilot Chat (VS Code), usa el prompt:
 
-En esta vista podemos crear un nuevo espacio haciendo clic en el botón **create space**, puedes completar los campos con los siguientes valores:
+   ```text
+   Mejora el archivo #about.md para incluir documentación avanzada del proyecto. Incluye secciones que indiquen: cuáles son los runtimes y frameworks utilizados, explica detalladamente cómo ejecutar el proyecto y cómo acceder a él a través del navegador. 🌐
 
-![copilot-new-space](./assets/copilot-new-space.png)
+   Utiliza un lenguaje técnico orientado a un público objetivo de Desarrolladores, Sysadmins, Ingenieros DevOps e Ingenieros Cloud. 🛠️☁️
 
-Esto creará un nuevo espacio de Copilot. Ahora comencemos a agregar contexto útil en este espacio. Agreguemos la documentación que creamos.
+   Incluye emojis e iconos cuando sea necesario. ✨
+   ```
 
-Aquí busca el repositorio en el que estamos trabajando y agrega las carpetas necesarias como fuente, luego haz clic en `add`.
+3. Acepta los cambios, haz commit y push.
 
-![spaces-sources](./assets/copilot-spaces-sources.png)
+### 2.2 Creación de un entorno de Copilot Spaces
 
-Copilot comenzará a indexar los archivos y, una vez que haya terminado, podremos empezar a hacer algunas preguntas sobre el proyecto. Copilot responderá basándose en la información de todo el proyecto, incluida la documentación que creamos.
+1. Ve a [GitHub](https://github.com) > Menú lateral > **Copilot** > **Spaces**.
+2. Haz clic en **Create space** y completa los datos.
+3. Agrega el repositorio como fuente.
+4. Pregunta al espacio:
 
-Pruébalo preguntándole a GitHub Copilot Spaces lo siguiente:
+   ```text
+   ¿Cómo puedo ejecutar este proyecto y cuáles son los entornos de ejecución (runtimes) de copilot-agentic-demo?
+   ```
 
-```
-¿Cómo puedo ejecutar este proyecto y cuáles son los entornos de ejecución (runtimes) de copilot-agentic-demo?
-```
+---
 
-### 🧠 Paso 3. Uso de GitHub Copilot Coding Agent (Parte 2).
+## 🧠 Paso 3. Uso de GitHub Copilot Coding Agent (Parte 2)
 
-Mientras configurábamos Copilot Spaces, el Coding Agent estuvo trabajando en segundo plano. Verifiquemos los resultados del issue que le asignamos. Para hacerlo, vayamos al issue creado anteriormente.
+Verifica las tareas asignadas anteriormente a través de los diferentes métodos (Issue, Mission Control, Agents Tab, IDE).
 
-- Abre el issue.
-- Abre el Pull Request asociado al issue y observa los resultados.
-- Notarás que GitHub Copilot completó el PR con muchos detalles sobre los cambios realizados, también añadió la estrategia que utilizó e incluso algunas capturas de pantalla mostrando los cambios.
+1. Abre los Pull Requests asociados a cada una de las tareas.
+2. Revisa los detalles y capturas de pantalla proporcionados por Copilot.
+3. Haz clic en **View Session** para ver el "paso a paso" del agente y la estrategia utilizada.
+4. Si estás conforme con los resultados, haz Merge de los PRs.
 
 ![results](./assets/Copilot-Coding-Agent-Results.png)
 
-Si nos interesa ver cómo Copilot manejó esta situación y la estrategia y pasos que utilizó, podemos ver la sesión de actividad haciendo clic en el botón **view session** en la parte inferior del pull request, justo antes del botón Merge Pull Request.
+---
 
-![session](./assets/view-session.png)
+## 👀 Paso 4. GitHub Copilot Code Review
 
-Haz clic allí y verás una interfaz muy similar a la que encuentras en GitHub Actions, pero en este caso contendrá todos los pasos, comandos y decisiones que tomó el Coding Agent durante la ejecución del issue. Básicamente, estos son los pasos que siguió para completar la tarea.
+Automatiza la revisión de código en el flujo SDLC.
 
-Si estás de acuerdo con estos cambios, podemos marcar el PR como listo para revisión y completar la solicitud de fusión (merge).
-
-Esto fusionará los cambios sugeridos por Copilot desde la rama de trabajo a la rama de destino (en este caso, la rama main).
-
-### 👀 Paso 4. GitHub Copilot Code Review.
-
-Imaginemos que las sugerencias creadas por el Coding Agent fueron creadas por un compañero de equipo u otra persona, y en el flujo del SDLC se necesita una revisión de código. Esto es algo que se puede automatizar con GitHub Copilot.
-
-Para usar el Code Review agéntico, simplemente podemos ir a cualquier pull request abierto y asignar la revisión a GitHub Copilot.
+1. Ve a un Pull Request abierto.
+2. Asigna la revisión a **GitHub Copilot**.
 
 ![code-reviewer](./assets/copilot-code-reviewer.png)
 
-Si hay algo que se pueda mejorar, Copilot dejará comentarios automáticamente en los archivos que pueden ser optimizados. Y también dejará una explicación del PR y sugerencias en el propio PR.
+Copilot dejará comentarios y sugerencias automáticamente.
 
-Si todo se ve bien, en este momento puedes realizar un Merge entre la rama de trabajo y la rama main.
+---
 
-----
+<div align="center">
 
-**¡Has llegado al final de la capacitación. Felicidades!!💫**
-
-Al final, si descargas los cambios sugeridos por Copilot y construis la aplicación en tu entorno local, deberías ver este resultado:
+**¡Has llegado al final de la capacitación. Felicidades! 💫**
 
 ![final-result](./assets/final-result.png)
+
+</div>
