@@ -269,6 +269,15 @@ Verifica las tareas asignadas anteriormente a través de los diferentes métodos
 
 ![results](./assets/Copilot-Coding-Agent-Results.png)
 
+<div align="center">
+
+Si descargaste el proyecto y ejecutaste la aplicación, este es el resultado final después de que Copilot Coding Agent realizó los cambios solicitados en el Paso 1.
+
+![final-result](./assets/final-result.png)
+
+</div>
+
+
 ---
 
 ## 👀 Paso 4. GitHub Copilot Code Review
@@ -284,10 +293,4 @@ Copilot dejará comentarios y sugerencias automáticamente.
 
 ---
 
-<div align="center">
-
 **¡Has llegado al final de la capacitación. Felicidades! 💫**
-
-![final-result](./assets/final-result.png)
-
-</div>

@@ -269,6 +269,14 @@ Verify the tasks assigned previously through the different methods (Issue, Missi
 
 ![results](./assets/Copilot-Coding-Agent-Results.png)
 
+<div align="center">
+
+If you downloaded the project and ran the application, this is the final result after the Copilot Coding Agent made the requested changes in Step 1.
+
+![final-result](./assets/final-result.png)
+
+</div>
+
 ---
 
 ## 👀 Step 4. GitHub Copilot Code Review
@@ -287,7 +295,5 @@ Copilot will automatically leave comments and suggestions.
 <div align="center">
 
 **You have reached the end of the training. Congratulations! 💫**
-
-![final-result](./assets/final-result.png)
 
 </div>
