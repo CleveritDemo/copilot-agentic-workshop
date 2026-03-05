@@ -100,6 +100,21 @@ form {
   outline: none;
   transition: box-shadow 0.2s;
 }
+#categorySelect {
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  box-shadow: 0 1px 2px var(--input-shadow);
+  font-size: 1em;
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+#categorySelect:focus {
+  box-shadow: 0 2px 8px var(--input-focus-shadow);
+}
 #taskInput:focus {
   box-shadow: 0 2px 8px var(--input-focus-shadow);
 }
@@ -188,4 +203,44 @@ li button:active {
   li {
     padding: 0.75em 0.5em;
   }
+}
+
+/* Category badge styles */
+.category-badge {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: 500;
+  margin-right: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Category color coding */
+.category-low {
+  border-left: 4px solid #4caf50;
+}
+
+.category-low .category-badge {
+  background-color: #4caf50;
+  color: white;
+}
+
+.category-medium {
+  border-left: 4px solid #ff9800;
+}
+
+.category-medium .category-badge {
+  background-color: #ff9800;
+  color: white;
+}
+
+.category-high {
+  border-left: 4px solid #f44336;
+}
+
+.category-high .category-badge {
+  background-color: #f44336;
+  color: white;
 }

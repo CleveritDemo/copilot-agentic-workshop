@@ -18,8 +18,8 @@ exports.getAllTasks = (req, res) => {
 
 exports.createTask = (req, res) => {
   const tasks = readTasks();
-  const { title, completed = false } = req.body;
-  const newTask = { id: uuidv4(), title, completed };
+  const { title, completed = false, category = 'Medium' } = req.body;
+  const newTask = { id: uuidv4(), title, completed, category };
   tasks.push(newTask);
   writeTasks(tasks);
   res.status(201).json(newTask);
@@ -32,6 +32,7 @@ exports.updateTask = (req, res) => {
 
   task.title = req.body.title ?? task.title;
   task.completed = req.body.completed ?? task.completed;
+  task.category = req.body.category ?? task.category;
   writeTasks(tasks);
   res.json(task);
 };
