@@ -35,17 +35,39 @@ async function fetchTasks() {
   tasks.forEach(addTaskToDOM);
 }
 
+const VALID_CATEGORIES = ['Low', 'Medium', 'High'];
+
 function addTaskToDOM(task) {
+  const safeCategory = VALID_CATEGORIES.includes(task.category) ? task.category : 'Medium';
+
   const li = document.createElement('li');
-  const categoryClass = `category-${task.category ? task.category.toLowerCase() : 'medium'}`;
-  li.innerHTML = `
-    <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
-    <div class="task-actions">
-      <span class="category-badge ${categoryClass}">${task.category || 'Medium'}</span>
-      <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
-      <button onclick="deleteTask('${task.id}')">✕</button>
-    </div>
-  `;
+
+  const titleSpan = document.createElement('span');
+  if (task.completed) titleSpan.classList.add('completed');
+  titleSpan.textContent = task.title;
+
+  const actionsDiv = document.createElement('div');
+  actionsDiv.className = 'task-actions';
+
+  const categoryBadge = document.createElement('span');
+  categoryBadge.className = `category-badge category-${safeCategory.toLowerCase()}`;
+  categoryBadge.textContent = safeCategory;
+
+  const completeBtn = document.createElement('button');
+  completeBtn.textContent = '✓';
+  completeBtn.addEventListener('click', () => toggleComplete(task.id, !task.completed));
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '✕';
+  deleteBtn.addEventListener('click', () => deleteTask(task.id));
+
+  actionsDiv.appendChild(categoryBadge);
+  actionsDiv.appendChild(completeBtn);
+  actionsDiv.appendChild(deleteBtn);
+
+  li.appendChild(titleSpan);
+  li.appendChild(actionsDiv);
+
   taskList.appendChild(li);
 }
 
