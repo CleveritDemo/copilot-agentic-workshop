@@ -82,12 +82,19 @@ async function saveTask(id, btn) {
     return;
   }
 
-  await fetch(`${API_URL}/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title: newTitle })
-  });
-  fetchTasks();
+  try {
+    const res = await fetch(`${API_URL}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: newTitle })
+    });
+    if (!res.ok) throw new Error('Failed to update task');
+    fetchTasks();
+  } catch (err) {
+    input.classList.add('edit-input--error');
+    input.title = 'Could not save changes. Please try again.';
+    input.focus();
+  }
 }
 
 taskForm.addEventListener('submit', async e => {
