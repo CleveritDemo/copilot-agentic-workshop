@@ -3,6 +3,9 @@ const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
 const themeToggle = document.getElementById('themeToggle');
+const searchInput = document.getElementById('searchInput');
+
+let allTasks = [];
 
 // Theme functionality
 function initTheme() {
@@ -29,9 +32,17 @@ initTheme();
 
 async function fetchTasks() {
   const res = await fetch(API_URL);
-  const tasks = await res.json();
+  allTasks = await res.json();
+  renderTasks();
+}
+
+function renderTasks() {
+  const query = searchInput.value.toLowerCase().trim();
+  const filtered = query
+    ? allTasks.filter(task => task.title.toLowerCase().includes(query))
+    : allTasks;
   taskList.innerHTML = '';
-  tasks.forEach(addTaskToDOM);
+  filtered.forEach(addTaskToDOM);
 }
 
 function addTaskToDOM(task) {
@@ -46,6 +57,8 @@ function addTaskToDOM(task) {
   taskList.appendChild(li);
 }
 
+searchInput.addEventListener('input', renderTasks);
+
 taskForm.addEventListener('submit', async e => {
   e.preventDefault();
   const title = taskInput.value;
@@ -55,8 +68,10 @@ taskForm.addEventListener('submit', async e => {
     body: JSON.stringify({ title })
   });
   const task = await res.json();
-  addTaskToDOM(task);
+  allTasks.push(task);
   taskInput.value = '';
+  searchInput.value = '';
+  renderTasks();
 });
 
 async function toggleComplete(id, completed) {
@@ -70,7 +85,8 @@ async function toggleComplete(id, completed) {
 
 async function deleteTask(id) {
   await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-  fetchTasks();
+  allTasks = allTasks.filter(t => t.id !== id);
+  renderTasks();
 }
 
 fetchTasks();
