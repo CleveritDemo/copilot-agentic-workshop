@@ -16,6 +16,12 @@
   --input-focus-shadow: rgba(25,118,210,0.15);
   --submit-shadow: rgba(25,118,210,0.08);
   --submit-hover-shadow: rgba(25,118,210,0.12);
+  --category-low-bg: #c8e6c9;
+  --category-low-text: #2e7d32;
+  --category-medium-bg: #ffe0b2;
+  --category-medium-text: #e65100;
+  --category-high-bg: #ffcdd2;
+  --category-high-text: #c62828;
 }
 
 [data-theme="dark"] {
@@ -36,6 +42,12 @@
   --input-focus-shadow: rgba(100,181,246,0.25);
   --submit-shadow: rgba(100,181,246,0.15);
   --submit-hover-shadow: rgba(100,181,246,0.25);
+  --category-low-bg: #1b5e20;
+  --category-low-text: #a5d6a7;
+  --category-medium-bg: #e65100;
+  --category-medium-text: #ffcc80;
+  --category-high-bg: #b71c1c;
+  --category-high-text: #ef9a9a;
 }
 
 .header {
@@ -100,6 +112,22 @@ form {
   outline: none;
   transition: box-shadow 0.2s;
 }
+#categorySelect {
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  box-shadow: 0 1px 2px var(--input-shadow);
+  font-size: 1em;
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  min-width: 120px;
+}
+#categorySelect:focus {
+  box-shadow: 0 2px 8px var(--input-focus-shadow);
+}
 #taskInput:focus {
   box-shadow: 0 2px 8px var(--input-focus-shadow);
 }
@@ -148,6 +176,30 @@ li span {
   text-decoration: line-through;
   color: var(--completed-color);
 }
+.task-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.category-badge {
+  padding: 0.25em 0.75em;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.category-low {
+  background: var(--category-low-bg);
+  color: var(--category-low-text);
+}
+.category-medium {
+  background: var(--category-medium-bg);
+  color: var(--category-medium-text);
+}
+.category-high {
+  background: var(--category-high-bg);
+  color: var(--category-high-text);
+}
 li div {
   display: flex;
   gap: 8px;
@@ -185,7 +237,16 @@ li button:active {
     flex-direction: column;
     gap: 8px;
   }
+  #categorySelect {
+    width: 100%;
+  }
   li {
     padding: 0.75em 0.5em;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .task-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }

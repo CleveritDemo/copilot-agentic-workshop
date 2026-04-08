@@ -2,6 +2,7 @@ const API_URL = 'http://localhost:3000/api/tasks';
 const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
+const categorySelect = document.getElementById('categorySelect');
 const themeToggle = document.getElementById('themeToggle');
 
 // Theme functionality
@@ -36,9 +37,11 @@ async function fetchTasks() {
 
 function addTaskToDOM(task) {
   const li = document.createElement('li');
+  const categoryClass = `category-${task.category ? task.category.toLowerCase() : 'medium'}`;
   li.innerHTML = `
     <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
-    <div>
+    <div class="task-actions">
+      <span class="category-badge ${categoryClass}">${task.category || 'Medium'}</span>
       <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
       <button onclick="deleteTask('${task.id}')">✕</button>
     </div>
@@ -49,14 +52,16 @@ function addTaskToDOM(task) {
 taskForm.addEventListener('submit', async e => {
   e.preventDefault();
   const title = taskInput.value;
+  const category = categorySelect.value;
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title })
+    body: JSON.stringify({ title, category })
   });
   const task = await res.json();
   addTaskToDOM(task);
   taskInput.value = '';
+  categorySelect.value = 'Medium';
 });
 
 async function toggleComplete(id, completed) {
