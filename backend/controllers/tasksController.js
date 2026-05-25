@@ -16,10 +16,15 @@ exports.getAllTasks = (req, res) => {
   res.json(readTasks());
 };
 
+const VALID_CATEGORIES = ['Low', 'Medium', 'High'];
+
 exports.createTask = (req, res) => {
   const tasks = readTasks();
-  const { title, completed = false } = req.body;
-  const newTask = { id: uuidv4(), title, completed };
+  const { title, completed = false, category = 'Low' } = req.body;
+  if (!VALID_CATEGORIES.includes(category)) {
+    return res.status(400).json({ message: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}` });
+  }
+  const newTask = { id: uuidv4(), title, completed, category };
   tasks.push(newTask);
   writeTasks(tasks);
   res.status(201).json(newTask);
@@ -32,6 +37,12 @@ exports.updateTask = (req, res) => {
 
   task.title = req.body.title ?? task.title;
   task.completed = req.body.completed ?? task.completed;
+  if (req.body.category !== undefined) {
+    if (!VALID_CATEGORIES.includes(req.body.category)) {
+      return res.status(400).json({ message: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}` });
+    }
+    task.category = req.body.category;
+  }
   writeTasks(tasks);
   res.json(task);
 };
