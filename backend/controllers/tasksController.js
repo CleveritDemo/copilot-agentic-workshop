@@ -18,8 +18,8 @@ exports.getAllTasks = (req, res) => {
 
 exports.createTask = (req, res) => {
   const tasks = readTasks();
-  const { title, completed = false } = req.body;
-  const newTask = { id: uuidv4(), title, completed };
+  const { title, category = '', completed = false } = req.body;
+  const newTask = { id: uuidv4(), title, category, completed };
   tasks.push(newTask);
   writeTasks(tasks);
   res.status(201).json(newTask);
@@ -31,6 +31,7 @@ exports.updateTask = (req, res) => {
   if (!task) return res.status(404).json({ message: 'Task not found' });
 
   task.title = req.body.title ?? task.title;
+  task.category = req.body.category !== undefined ? req.body.category : task.category;
   task.completed = req.body.completed ?? task.completed;
   writeTasks(tasks);
   res.json(task);
