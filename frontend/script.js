@@ -38,16 +38,35 @@ async function fetchTasks() {
 function addTaskToDOM(task) {
   const category = task.category || 'Medium';
   const li = document.createElement('li');
-  li.innerHTML = `
-    <div class="task-content">
-      <span class="task-title ${task.completed ? 'completed' : ''}">${task.title}</span>
-      <span class="category-badge category-${category.toLowerCase()}">${category}</span>
-    </div>
-    <div>
-      <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
-      <button onclick="deleteTask('${task.id}')">✕</button>
-    </div>
-  `;
+  const taskContent = document.createElement('div');
+  taskContent.className = 'task-content';
+
+  const title = document.createElement('span');
+  title.className = `task-title ${task.completed ? 'completed' : ''}`;
+  title.textContent = task.title;
+
+  const badge = document.createElement('span');
+  badge.className = `category-badge category-${category.toLowerCase()}`;
+  badge.textContent = category;
+
+  const actions = document.createElement('div');
+
+  const completeButton = document.createElement('button');
+  completeButton.textContent = '✓';
+  completeButton.setAttribute('aria-label', 'Mark task as complete');
+  completeButton.addEventListener('click', () => toggleComplete(task.id, !task.completed));
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = '✕';
+  deleteButton.setAttribute('aria-label', 'Delete task');
+  deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+  taskContent.appendChild(title);
+  taskContent.appendChild(badge);
+  actions.appendChild(completeButton);
+  actions.appendChild(deleteButton);
+  li.appendChild(taskContent);
+  li.appendChild(actions);
   taskList.appendChild(li);
 }
 

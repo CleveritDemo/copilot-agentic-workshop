@@ -20,8 +20,11 @@ exports.getAllTasks = (req, res) => {
 exports.createTask = (req, res) => {
   const tasks = readTasks();
   const { title, completed = false, category = 'Medium' } = req.body;
+  if (typeof title !== 'string' || title.trim() === '') {
+    return res.status(400).json({ message: 'Title is required' });
+  }
   const normalizedCategory = VALID_CATEGORIES.includes(category) ? category : 'Medium';
-  const newTask = { id: uuidv4(), title, completed, category: normalizedCategory };
+  const newTask = { id: uuidv4(), title: title.trim(), completed, category: normalizedCategory };
   tasks.push(newTask);
   writeTasks(tasks);
   res.status(201).json(newTask);
