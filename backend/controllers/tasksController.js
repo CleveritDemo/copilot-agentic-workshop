@@ -39,7 +39,12 @@ exports.updateTask = (req, res) => {
   const task = tasks.find(t => t.id === req.params.id);
   if (!task) return res.status(404).json({ message: 'Task not found' });
 
-  task.title = req.body.title ?? task.title;
+  if (req.body.title !== undefined) {
+    if (typeof req.body.title !== 'string' || req.body.title.trim() === '') {
+      return res.status(400).json({ message: 'Title is required and cannot be empty' });
+    }
+    task.title = req.body.title.trim();
+  }
   task.completed = req.body.completed ?? task.completed;
   if (req.body.category !== undefined) {
     task.category = normalizeCategory(req.body.category);

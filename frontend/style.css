@@ -101,9 +101,7 @@ form {
   outline: none;
   transition: box-shadow 0.2s;
 }
-#taskInput:focus {
-  box-shadow: 0 2px 8px var(--input-focus-shadow);
-}
+#taskInput:focus,
 #taskCategory:focus {
   box-shadow: 0 2px 8px var(--input-focus-shadow);
 }
