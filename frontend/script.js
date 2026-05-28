@@ -5,6 +5,15 @@ const taskInput = document.getElementById('taskInput');
 const taskCategory = document.getElementById('taskCategory');
 const themeToggle = document.getElementById('themeToggle');
 const CATEGORIES = ['Low', 'Medium', 'High'];
+const DEFAULT_CATEGORY = 'Medium';
+
+function isValidCategory(category) {
+  return CATEGORIES.includes(category);
+}
+
+function normalizeCategory(category) {
+  return isValidCategory(category) ? category : DEFAULT_CATEGORY;
+}
 
 // Theme functionality
 function initTheme() {
@@ -38,18 +47,42 @@ async function fetchTasks() {
 
 function addTaskToDOM(task) {
   const li = document.createElement('li');
-  const category = CATEGORIES.includes(task.category) ? task.category : 'Medium';
-  li.innerHTML = `
-    <div class="task-main">
-      <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
-      <small class="task-category task-category-${category.toLowerCase()}">${category}</small>
-    </div>
-    <div>
-      <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
-      <button onclick="editTask('${task.id}', '${encodeURIComponent(task.title)}', '${category}')">✎</button>
-      <button onclick="deleteTask('${task.id}')">✕</button>
-    </div>
-  `;
+  const category = normalizeCategory(task.category);
+
+  const taskMain = document.createElement('div');
+  taskMain.className = 'task-main';
+
+  const titleSpan = document.createElement('span');
+  if (task.completed) titleSpan.classList.add('completed');
+  titleSpan.textContent = task.title;
+
+  const categoryBadge = document.createElement('small');
+  categoryBadge.className = `task-category task-category-${category.toLowerCase()}`;
+  categoryBadge.textContent = category;
+
+  taskMain.appendChild(titleSpan);
+  taskMain.appendChild(categoryBadge);
+
+  const actions = document.createElement('div');
+
+  const completeButton = document.createElement('button');
+  completeButton.textContent = '✓';
+  completeButton.addEventListener('click', () => toggleComplete(task.id, !task.completed));
+
+  const editButton = document.createElement('button');
+  editButton.textContent = '✎';
+  editButton.addEventListener('click', () => editTask(task.id, task.title, category));
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = '✕';
+  deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+  actions.appendChild(completeButton);
+  actions.appendChild(editButton);
+  actions.appendChild(deleteButton);
+
+  li.appendChild(taskMain);
+  li.appendChild(actions);
   taskList.appendChild(li);
 }
 
@@ -58,19 +91,23 @@ taskForm.addEventListener('submit', async e => {
   const title = taskInput.value.trim();
   if (!title) return;
 
-  const category = CATEGORIES.includes(taskCategory.value) ? taskCategory.value : 'Medium';
+  const category = normalizeCategory(taskCategory.value);
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, category })
   });
 
-  if (!res.ok) return;
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({}));
+    alert(error.message || 'Could not create task.');
+    return;
+  }
 
   const task = await res.json();
   addTaskToDOM(task);
   taskInput.value = '';
-  taskCategory.value = 'Medium';
+  taskCategory.value = DEFAULT_CATEGORY;
 });
 
 async function toggleComplete(id, completed) {
@@ -87,8 +124,7 @@ async function deleteTask(id) {
   fetchTasks();
 }
 
-async function editTask(id, encodedCurrentTitle, currentCategory) {
-  const currentTitle = decodeURIComponent(encodedCurrentTitle);
+async function editTask(id, currentTitle, currentCategory) {
   const newTitle = prompt('Edit task title:', currentTitle);
   if (newTitle === null) return;
 
@@ -104,11 +140,12 @@ async function editTask(id, encodedCurrentTitle, currentCategory) {
   );
   if (newCategory === null) return;
 
-  const normalizedCategory = newCategory.trim();
-  if (!CATEGORIES.includes(normalizedCategory)) {
+  const requestedCategory = newCategory.trim();
+  if (!isValidCategory(requestedCategory)) {
     alert(`Invalid category. Use one of: ${CATEGORIES.join(', ')}.`);
     return;
   }
+  const normalizedCategory = normalizeCategory(requestedCategory);
 
   const res = await fetch(`${API_URL}/${id}`, {
     method: 'PUT',
@@ -117,7 +154,8 @@ async function editTask(id, encodedCurrentTitle, currentCategory) {
   });
 
   if (!res.ok) {
-    alert('Could not update task.');
+    const error = await res.json().catch(() => ({}));
+    alert(error.message || 'Could not update task.');
     return;
   }
 

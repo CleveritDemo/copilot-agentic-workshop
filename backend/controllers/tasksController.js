@@ -5,6 +5,11 @@ const { v4: uuidv4 } = require('uuid');
 const filePath = path.join(__dirname, '../data/tasks.json');
 const ALLOWED_CATEGORIES = ['Low', 'Medium', 'High'];
 
+function normalizeTitle(title) {
+  const trimmedTitle = title?.trim();
+  return trimmedTitle || null;
+}
+
 function readTasks() {
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
@@ -20,13 +25,14 @@ exports.getAllTasks = (req, res) => {
 exports.createTask = (req, res) => {
   const tasks = readTasks();
   const { title, completed = false, category = 'Medium' } = req.body;
+  const normalizedTitle = normalizeTitle(title);
 
-  if (!title || !title.trim()) {
+  if (!normalizedTitle) {
     return res.status(400).json({ message: 'Title is required' });
   }
 
   const normalizedCategory = ALLOWED_CATEGORIES.includes(category) ? category : 'Medium';
-  const newTask = { id: uuidv4(), title: title.trim(), category: normalizedCategory, completed };
+  const newTask = { id: uuidv4(), title: normalizedTitle, category: normalizedCategory, completed };
   tasks.push(newTask);
   writeTasks(tasks);
   res.status(201).json(newTask);
@@ -38,10 +44,11 @@ exports.updateTask = (req, res) => {
   if (!task) return res.status(404).json({ message: 'Task not found' });
 
   if (req.body.title !== undefined) {
-    if (!req.body.title || !req.body.title.trim()) {
+    const normalizedTitle = normalizeTitle(req.body.title);
+    if (!normalizedTitle) {
       return res.status(400).json({ message: 'Title cannot be empty' });
     }
-    task.title = req.body.title.trim();
+    task.title = normalizedTitle;
   }
 
   if (req.body.category !== undefined) {
