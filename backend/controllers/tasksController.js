@@ -5,6 +5,10 @@ const { v4: uuidv4 } = require('uuid');
 const filePath = path.join(__dirname, '../data/tasks.json');
 const VALID_CATEGORIES = ['High', 'Medium', 'Low'];
 
+function normalizeCategory(category) {
+  return VALID_CATEGORIES.includes(category) ? category : 'Medium';
+}
+
 function readTasks() {
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
@@ -21,9 +25,9 @@ exports.createTask = (req, res) => {
   const tasks = readTasks();
   const { title, completed = false, category = 'Medium' } = req.body;
   if (typeof title !== 'string' || title.trim() === '') {
-    return res.status(400).json({ message: 'Title is required' });
+    return res.status(400).json({ message: 'Title is required and cannot be empty' });
   }
-  const normalizedCategory = VALID_CATEGORIES.includes(category) ? category : 'Medium';
+  const normalizedCategory = normalizeCategory(category);
   const newTask = { id: uuidv4(), title: title.trim(), completed, category: normalizedCategory };
   tasks.push(newTask);
   writeTasks(tasks);
@@ -38,7 +42,7 @@ exports.updateTask = (req, res) => {
   task.title = req.body.title ?? task.title;
   task.completed = req.body.completed ?? task.completed;
   if (req.body.category !== undefined) {
-    task.category = VALID_CATEGORIES.includes(req.body.category) ? req.body.category : 'Medium';
+    task.category = normalizeCategory(req.body.category);
   }
   writeTasks(tasks);
   res.json(task);

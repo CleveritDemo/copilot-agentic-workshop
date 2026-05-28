@@ -53,7 +53,7 @@ function addTaskToDOM(task) {
 
   const completeButton = document.createElement('button');
   completeButton.textContent = '✓';
-  completeButton.setAttribute('aria-label', 'Mark task as complete');
+  completeButton.setAttribute('aria-label', task.completed ? 'Mark task as incomplete' : 'Mark task as complete');
   completeButton.addEventListener('click', () => toggleComplete(task.id, !task.completed));
 
   const deleteButton = document.createElement('button');
@@ -72,7 +72,8 @@ function addTaskToDOM(task) {
 
 taskForm.addEventListener('submit', async e => {
   e.preventDefault();
-  const title = taskInput.value;
+  const title = taskInput.value.trim();
+  if (!title) return;
   const category = taskCategory.value || 'Medium';
   const res = await fetch(API_URL, {
     method: 'POST',
