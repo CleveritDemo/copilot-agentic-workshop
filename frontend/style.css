@@ -88,7 +88,8 @@ form {
   gap: 12px;
   margin-bottom: 1.5em;
 }
-#taskInput {
+#taskInput,
+#taskCategory {
   flex: 1;
   padding: 0.75em 1em;
   border: none;
@@ -99,16 +100,6 @@ form {
   font-size: 1em;
   outline: none;
   transition: box-shadow 0.2s;
-}
-#taskCategory {
-  padding: 0.75em 1em;
-  border: none;
-  border-radius: 4px;
-  background: var(--input-bg);
-  color: var(--text-color);
-  box-shadow: 0 1px 2px var(--input-shadow);
-  font-size: 1em;
-  outline: none;
 }
 #taskInput:focus {
   box-shadow: 0 2px 8px var(--input-focus-shadow);

@@ -1,4 +1,5 @@
 const API_URL = 'http://localhost:3000/api/tasks';
+const DEFAULT_CATEGORY = 'Medium';
 const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
@@ -36,7 +37,7 @@ async function fetchTasks() {
 }
 
 function addTaskToDOM(task) {
-  const category = task.category || 'Medium';
+  const category = task.category || DEFAULT_CATEGORY;
   const li = document.createElement('li');
   const taskContent = document.createElement('div');
   taskContent.className = 'task-content';
@@ -74,7 +75,7 @@ taskForm.addEventListener('submit', async e => {
   e.preventDefault();
   const title = taskInput.value.trim();
   if (!title) return;
-  const category = taskCategory.value || 'Medium';
+  const category = taskCategory.value || DEFAULT_CATEGORY;
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -83,7 +84,7 @@ taskForm.addEventListener('submit', async e => {
   const task = await res.json();
   addTaskToDOM(task);
   taskInput.value = '';
-  taskCategory.value = 'Medium';
+  taskCategory.value = DEFAULT_CATEGORY;
 });
 
 async function toggleComplete(id, completed) {
