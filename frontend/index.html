@@ -14,6 +14,11 @@
   </div>
   <form id="taskForm">
     <input type="text" id="taskInput" placeholder="New task" required />
+    <select id="taskCategory" title="Choose category">
+      <option value="Low">Low</option>
+      <option value="Medium" selected>Medium</option>
+      <option value="High">High</option>
+    </select>
     <button type="submit" title="Click to add a new task to the list">Add Task</button>
   </form>
   <ul id="taskList"></ul>
