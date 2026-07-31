@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte GitHub Copilot — CleveritDemo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f6f8fa; color: #1f2328; }
+
+    header {
+      background: linear-gradient(135deg, #24292f 0%, #1a7f64 100%);
+      color: white; padding: 32px 40px;
+    }
+    header h1 { font-size: 28px; font-weight: 700; }
+    header p  { opacity: 0.8; margin-top: 6px; font-size: 14px; }
+    .header-meta { margin-top: 12px; font-size: 13px; opacity: 0.7; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+
+    .card {
+      background: white; border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      padding: 24px 28px; margin-bottom: 24px;
+    }
+    .card h2 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { color: #57606a; font-size: 13px; margin-bottom: 16px; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px; margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: white; border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      padding: 20px; text-align: center;
+    }
+    .kpi-icon  { font-size: 28px; margin-bottom: 8px; }
+    .kpi-value { font-size: 30px; font-weight: 700; color: #0969da; }
+    .kpi-label { font-size: 12px; color: #57606a; margin-top: 4px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: #f6f8fa; }
+    th { padding: 10px 12px; text-align: left; font-weight: 600; color: #57606a; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; border-bottom: 2px solid #e0e0e0; }
+    tbody tr:hover { background: #f6f8fa; }
+    tbody tr { border-bottom: 1px solid #f0f0f0; }
+
+    .badge { background: #0969da; color: white; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+
+    .warning { background: #fff8e1; border-left: 4px solid #ffc107; padding: 14px 16px; border-radius: 6px; font-size: 13px; line-height: 1.6; }
+
+    .note { background: #f0f7ff; border-left: 4px solid #0969da; }
+    .note ul { padding-left: 20px; }
+    .note li { margin-top: 8px; font-size: 13px; line-height: 1.6; }
+
+    footer { text-align: center; padding: 24px; color: #57606a; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Reporte de Uso — GitHub Copilot</h1>
+  <p>Organización: <strong>CleveritDemo</strong></p>
+  <div class="header-meta">Generado el 02/06/2026 17:16 · Período: últimos 30 días · Fuente: GitHub Copilot API</div>
+</header>
+
+<main>
+      <section class='kpi-grid'>
+      <div class='kpi-card'>
+        <div class='kpi-icon'>💺</div>
+        <div class='kpi-value'>31</div>
+        <div class='kpi-label'>Seats Activos</div>
+      </div>
+      <div class='kpi-card'>
+        <div class='kpi-icon'>💡</div>
+        <div class='kpi-value'>10.119</div>
+        <div class='kpi-label'>Sugerencias Generadas</div>
+      </div>
+      <div class='kpi-card'>
+        <div class='kpi-icon'>✅</div>
+        <div class='kpi-value'>2.349</div>
+        <div class='kpi-label'>Sugerencias Aceptadas</div>
+      </div>
+      <div class='kpi-card'>
+        <div class='kpi-icon'>📈</div>
+        <div class='kpi-value'>23.2%</div>
+        <div class='kpi-label'>Tasa de Aceptación</div>
+      </div>
+      <div class='kpi-card'>
+        <div class='kpi-icon'>📝</div>
+        <div class='kpi-value'>89.494</div>
+        <div class='kpi-label'>Líneas de Código Aceptadas</div>
+      </div>
+      <div class='kpi-card'>
+        <div class='kpi-icon'>💬</div>
+        <div class='kpi-value'>4.940</div>
+        <div class='kpi-label'>Conversaciones de Chat</div>
+      </div>
+    </section>
+      <section class='card'>
+      <h2>👥 Usuarios con Licencia Copilot <span class='badge'>31 seats</span></h2>
+      <p class='subtitle'>Última actividad y estado de cada asiento asignado en la organización.</p>
+      <div style='overflow-x:auto'>
+        <table>
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th>Última Actividad</th>
+              <th>Editor</th>
+              <th>Asignado desde</th>
+            </tr>
+          </thead>
+          <tbody>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/201969378?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/atrucco-clever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>atrucco-clever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.106.3/copilot-chat/0.33.5</td>
+          <td style='padding:10px 12px;text-align:center'>28/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/132315741?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/cceballos-clever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>cceballos-clever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/131820353?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/cmunoz18' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>cmunoz18</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/170126610?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/daruinleonscig' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>daruinleonscig</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>JetBrains-GO/252.28238.32/copilot-intellij/1.5.61-243</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/7969348?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/diegopintog' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>diegopintog</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107'>Hace 5 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.107.0/copilot-chat/0.35.0</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/138173660?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/drpc007' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>drpc007</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.109.2/copilot-chat/0.37.5</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/179938387?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/EAliatis' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>EAliatis</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/200959388?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/EduardoPmx-CleverIt' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>EduardoPmx-CleverIt</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.122.1/copilot-chat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/229801814?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/egarvisocleverit' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>egarvisocleverit</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107'>Hace 4 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>copilot-chat-platform</td>
+          <td style='padding:10px 12px;text-align:center'>01/09/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/129883872?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/escodevdo' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>escodevdo</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545'>Hace 18 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.47.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/132704150?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/fasclever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>fasclever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545'>Hace 13 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.107.0/copilot-chat/0.35.0</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/235180454?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/fhormazabalcleverit' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>fhormazabalcleverit</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#aaa'>Sin actividad</span></td>
+          <td style='padding:10px 12px;text-align:center'>—</td>
+          <td style='padding:10px 12px;text-align:center'>17/04/2026</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/151780551?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/gberlot-clever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>gberlot-clever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.48.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/144465552?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/jblancoclever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>jblancoclever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.122.1/copilot-chat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/243149001?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/jpabarcaor' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>jpabarcaor</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107'>Hace 4 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.0</td>
+          <td style='padding:10px 12px;text-align:center'>10/11/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/68680470?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/jsusran' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>jsusran</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>JetBrains-PY/253.33514.19/copilot-intellij/1.10.0-251</td>
+          <td style='padding:10px 12px;text-align:center'>30/10/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/13736745?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/karluiz' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>karluiz</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Ayer</span></td>
+          <td style='padding:10px 12px;text-align:center'>JetBrains-DB/252.26830.46/copilot-intellij/1.8.0-243</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/130690948?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/LBrieva' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>LBrieva</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.104.0-insider/copilot-chat/0.31.2025082213</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/16445325?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/macmoi' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>macmoi</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/8779988?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/max-ang' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>max-ang</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545'>Hace 19 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.48.0</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/251202456?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/medinaj5455' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>medinaj5455</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>zed/0.1.0/zed-copilot/0.0.1</td>
+          <td style='padding:10px 12px;text-align:center'>09/01/2026</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/239425436?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/munozd5125' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>munozd5125</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107'>Hace 5 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.122.0/copilot-chat/0.50.0</td>
+          <td style='padding:10px 12px;text-align:center'>17/12/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/209795411?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/pmunoz-clever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>pmunoz-clever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.121.0/copilot-chat/0.49.0</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/132957303?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/RamsesMatosCleverIT' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>RamsesMatosCleverIT</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.49.0</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/52768391?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/rodrigoanti' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>rodrigoanti</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.107.0/copilot-chat/0.35.0</td>
+          <td style='padding:10px 12px;text-align:center'>06/05/2026</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/169684453?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/rtraidcleverit' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>rtraidcleverit</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.0</td>
+          <td style='padding:10px 12px;text-align:center'>01/04/2026</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/155647221?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/santiigerace' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>santiigerace</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.45.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/121240069?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/saulCleverit' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>saulCleverit</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.107.0/copilot-chat/0.35.0</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/151044580?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/westupinanm' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>westupinanm</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/144809562?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/WillClever' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>WillClever</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107'>Hace 2 días</span></td>
+          <td style='padding:10px 12px;text-align:center'>vscode/1.122.1/copilot-chat/0.50.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px'>
+            <img src='https://avatars.githubusercontent.com/u/121252968?v=4' width='28' height='28' style='border-radius:50%;vertical-align:middle;margin-right:8px'>
+            <a href='https://github.com/WilRodAcero' target='_blank' style='color:#0969da;text-decoration:none;font-weight:600'>WilRodAcero</a>
+          </td>
+          <td style='padding:10px 12px;text-align:center'><span style='background:#28a745;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;font-weight:600'>ACTIVE</span></td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745'>Hoy</span></td>
+          <td style='padding:10px 12px;text-align:center'>unknown/GitHubCopilotChat/0.48.1</td>
+          <td style='padding:10px 12px;text-align:center'>14/08/2025</td>
+        </tr></tbody>
+        </table>
+      </div>
+    </section>
+      <section class='card'>
+      <h2>📊 Métricas Diarias de Uso (últimos 30 días)</h2>
+      <p class='subtitle'>Actividad agregada por día. La tasa de aceptación indica qué porcentaje de sugerencias fueron aceptadas por los desarrolladores.</p>
+      <div style='overflow-x:auto'>
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Usuarios Activos</th>
+              <th>Usuarios Engaged</th>
+              <th>Sugerencias</th>
+              <th>Aceptadas</th>
+              <th>Tasa Aceptación</th>
+              <th>Líneas Aceptadas</th>
+              <th>Chats</th>
+            </tr>
+          </thead>
+          <tbody>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-06-01</td>
+          <td style='padding:10px 12px;text-align:center'>12</td>
+          <td style='padding:10px 12px;text-align:center'>12</td>
+          <td style='padding:10px 12px;text-align:right'>395</td>
+          <td style='padding:10px 12px;text-align:right'>29</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>7.3%</span></td>
+          <td style='padding:10px 12px;text-align:right'>4.388</td>
+          <td style='padding:10px 12px;text-align:right'>243</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-31</td>
+          <td style='padding:10px 12px;text-align:center'>1</td>
+          <td style='padding:10px 12px;text-align:center'>1</td>
+          <td style='padding:10px 12px;text-align:right'>67</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>0%</span></td>
+          <td style='padding:10px 12px;text-align:right'>81</td>
+          <td style='padding:10px 12px;text-align:right'>63</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-30</td>
+          <td style='padding:10px 12px;text-align:center'>3</td>
+          <td style='padding:10px 12px;text-align:center'>25</td>
+          <td style='padding:10px 12px;text-align:right'>108</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>0.9%</span></td>
+          <td style='padding:10px 12px;text-align:right'>147</td>
+          <td style='padding:10px 12px;text-align:right'>106</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-29</td>
+          <td style='padding:10px 12px;text-align:center'>16</td>
+          <td style='padding:10px 12px;text-align:center'>24</td>
+          <td style='padding:10px 12px;text-align:right'>323</td>
+          <td style='padding:10px 12px;text-align:right'>49</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>15.2%</span></td>
+          <td style='padding:10px 12px;text-align:right'>2.060</td>
+          <td style='padding:10px 12px;text-align:right'>192</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-28</td>
+          <td style='padding:10px 12px;text-align:center'>14</td>
+          <td style='padding:10px 12px;text-align:center'>23</td>
+          <td style='padding:10px 12px;text-align:right'>271</td>
+          <td style='padding:10px 12px;text-align:right'>68</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>25.1%</span></td>
+          <td style='padding:10px 12px;text-align:right'>3.236</td>
+          <td style='padding:10px 12px;text-align:right'>196</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-27</td>
+          <td style='padding:10px 12px;text-align:center'>12</td>
+          <td style='padding:10px 12px;text-align:center'>20</td>
+          <td style='padding:10px 12px;text-align:right'>446</td>
+          <td style='padding:10px 12px;text-align:right'>190</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>42.6%</span></td>
+          <td style='padding:10px 12px;text-align:right'>2.897</td>
+          <td style='padding:10px 12px;text-align:right'>136</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-26</td>
+          <td style='padding:10px 12px;text-align:center'>15</td>
+          <td style='padding:10px 12px;text-align:center'>18</td>
+          <td style='padding:10px 12px;text-align:right'>496</td>
+          <td style='padding:10px 12px;text-align:right'>247</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>49.8%</span></td>
+          <td style='padding:10px 12px;text-align:right'>5.074</td>
+          <td style='padding:10px 12px;text-align:right'>144</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-25</td>
+          <td style='padding:10px 12px;text-align:center'>12</td>
+          <td style='padding:10px 12px;text-align:center'>12</td>
+          <td style='padding:10px 12px;text-align:right'>447</td>
+          <td style='padding:10px 12px;text-align:right'>174</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>38.9%</span></td>
+          <td style='padding:10px 12px;text-align:right'>5.772</td>
+          <td style='padding:10px 12px;text-align:right'>189</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-24</td>
+          <td style='padding:10px 12px;text-align:center'>3</td>
+          <td style='padding:10px 12px;text-align:center'>3</td>
+          <td style='padding:10px 12px;text-align:right'>66</td>
+          <td style='padding:10px 12px;text-align:right'>62</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>93.9%</span></td>
+          <td style='padding:10px 12px;text-align:right'>1.238</td>
+          <td style='padding:10px 12px;text-align:right'>3</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-23</td>
+          <td style='padding:10px 12px;text-align:center'>5</td>
+          <td style='padding:10px 12px;text-align:center'>26</td>
+          <td style='padding:10px 12px;text-align:right'>148</td>
+          <td style='padding:10px 12px;text-align:right'>37</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>25%</span></td>
+          <td style='padding:10px 12px;text-align:right'>1.318</td>
+          <td style='padding:10px 12px;text-align:right'>26</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-22</td>
+          <td style='padding:10px 12px;text-align:center'>13</td>
+          <td style='padding:10px 12px;text-align:center'>26</td>
+          <td style='padding:10px 12px;text-align:right'>584</td>
+          <td style='padding:10px 12px;text-align:right'>106</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>18.2%</span></td>
+          <td style='padding:10px 12px;text-align:right'>1.606</td>
+          <td style='padding:10px 12px;text-align:right'>251</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-21</td>
+          <td style='padding:10px 12px;text-align:center'>6</td>
+          <td style='padding:10px 12px;text-align:center'>25</td>
+          <td style='padding:10px 12px;text-align:right'>129</td>
+          <td style='padding:10px 12px;text-align:right'>5</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>3.9%</span></td>
+          <td style='padding:10px 12px;text-align:right'>1.657</td>
+          <td style='padding:10px 12px;text-align:right'>109</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-20</td>
+          <td style='padding:10px 12px;text-align:center'>20</td>
+          <td style='padding:10px 12px;text-align:center'>24</td>
+          <td style='padding:10px 12px;text-align:right'>788</td>
+          <td style='padding:10px 12px;text-align:right'>154</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>19.5%</span></td>
+          <td style='padding:10px 12px;text-align:right'>9.457</td>
+          <td style='padding:10px 12px;text-align:right'>350</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-19</td>
+          <td style='padding:10px 12px;text-align:center'>20</td>
+          <td style='padding:10px 12px;text-align:center'>22</td>
+          <td style='padding:10px 12px;text-align:right'>498</td>
+          <td style='padding:10px 12px;text-align:right'>106</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>21.3%</span></td>
+          <td style='padding:10px 12px;text-align:right'>4.469</td>
+          <td style='padding:10px 12px;text-align:right'>316</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-18</td>
+          <td style='padding:10px 12px;text-align:center'>15</td>
+          <td style='padding:10px 12px;text-align:center'>16</td>
+          <td style='padding:10px 12px;text-align:right'>213</td>
+          <td style='padding:10px 12px;text-align:right'>79</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>37.1%</span></td>
+          <td style='padding:10px 12px;text-align:right'>1.658</td>
+          <td style='padding:10px 12px;text-align:right'>115</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-17</td>
+          <td style='padding:10px 12px;text-align:center'>2</td>
+          <td style='padding:10px 12px;text-align:center'>2</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>0%</span></td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>18</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-16</td>
+          <td style='padding:10px 12px;text-align:center'>4</td>
+          <td style='padding:10px 12px;text-align:center'>26</td>
+          <td style='padding:10px 12px;text-align:right'>34</td>
+          <td style='padding:10px 12px;text-align:right'>14</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>41.2%</span></td>
+          <td style='padding:10px 12px;text-align:right'>89</td>
+          <td style='padding:10px 12px;text-align:right'>35</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-15</td>
+          <td style='padding:10px 12px;text-align:center'>19</td>
+          <td style='padding:10px 12px;text-align:center'>25</td>
+          <td style='padding:10px 12px;text-align:right'>286</td>
+          <td style='padding:10px 12px;text-align:right'>51</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>17.8%</span></td>
+          <td style='padding:10px 12px;text-align:right'>2.206</td>
+          <td style='padding:10px 12px;text-align:right'>210</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-14</td>
+          <td style='padding:10px 12px;text-align:center'>20</td>
+          <td style='padding:10px 12px;text-align:center'>25</td>
+          <td style='padding:10px 12px;text-align:right'>651</td>
+          <td style='padding:10px 12px;text-align:right'>148</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>22.7%</span></td>
+          <td style='padding:10px 12px;text-align:right'>2.216</td>
+          <td style='padding:10px 12px;text-align:right'>225</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-13</td>
+          <td style='padding:10px 12px;text-align:center'>20</td>
+          <td style='padding:10px 12px;text-align:center'>24</td>
+          <td style='padding:10px 12px;text-align:right'>699</td>
+          <td style='padding:10px 12px;text-align:right'>42</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>6%</span></td>
+          <td style='padding:10px 12px;text-align:right'>6.649</td>
+          <td style='padding:10px 12px;text-align:right'>385</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-12</td>
+          <td style='padding:10px 12px;text-align:center'>16</td>
+          <td style='padding:10px 12px;text-align:center'>24</td>
+          <td style='padding:10px 12px;text-align:right'>740</td>
+          <td style='padding:10px 12px;text-align:right'>174</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>23.5%</span></td>
+          <td style='padding:10px 12px;text-align:right'>3.240</td>
+          <td style='padding:10px 12px;text-align:right'>269</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-11</td>
+          <td style='padding:10px 12px;text-align:center'>21</td>
+          <td style='padding:10px 12px;text-align:center'>22</td>
+          <td style='padding:10px 12px;text-align:right'>488</td>
+          <td style='padding:10px 12px;text-align:right'>152</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>31.1%</span></td>
+          <td style='padding:10px 12px;text-align:right'>5.529</td>
+          <td style='padding:10px 12px;text-align:right'>254</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-10</td>
+          <td style='padding:10px 12px;text-align:center'>2</td>
+          <td style='padding:10px 12px;text-align:center'>2</td>
+          <td style='padding:10px 12px;text-align:right'>14</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>0%</span></td>
+          <td style='padding:10px 12px;text-align:right'>224</td>
+          <td style='padding:10px 12px;text-align:right'>17</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-09</td>
+          <td style='padding:10px 12px;text-align:center'>3</td>
+          <td style='padding:10px 12px;text-align:center'>27</td>
+          <td style='padding:10px 12px;text-align:right'>110</td>
+          <td style='padding:10px 12px;text-align:right'>23</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>20.9%</span></td>
+          <td style='padding:10px 12px;text-align:right'>4.182</td>
+          <td style='padding:10px 12px;text-align:right'>49</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-08</td>
+          <td style='padding:10px 12px;text-align:center'>18</td>
+          <td style='padding:10px 12px;text-align:center'>26</td>
+          <td style='padding:10px 12px;text-align:right'>608</td>
+          <td style='padding:10px 12px;text-align:right'>78</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#dc3545;font-weight:700'>12.8%</span></td>
+          <td style='padding:10px 12px;text-align:right'>6.012</td>
+          <td style='padding:10px 12px;text-align:right'>289</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-07</td>
+          <td style='padding:10px 12px;text-align:center'>20</td>
+          <td style='padding:10px 12px;text-align:center'>25</td>
+          <td style='padding:10px 12px;text-align:right'>616</td>
+          <td style='padding:10px 12px;text-align:right'>187</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#28a745;font-weight:700'>30.4%</span></td>
+          <td style='padding:10px 12px;text-align:right'>4.670</td>
+          <td style='padding:10px 12px;text-align:right'>260</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-06</td>
+          <td style='padding:10px 12px;text-align:center'>17</td>
+          <td style='padding:10px 12px;text-align:center'>21</td>
+          <td style='padding:10px 12px;text-align:right'>535</td>
+          <td style='padding:10px 12px;text-align:right'>99</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>18.5%</span></td>
+          <td style='padding:10px 12px;text-align:right'>6.182</td>
+          <td style='padding:10px 12px;text-align:right'>346</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>2026-05-05</td>
+          <td style='padding:10px 12px;text-align:center'>13</td>
+          <td style='padding:10px 12px;text-align:center'>18</td>
+          <td style='padding:10px 12px;text-align:right'>359</td>
+          <td style='padding:10px 12px;text-align:right'>74</td>
+          <td style='padding:10px 12px;text-align:center'><span style='color:#ffc107;font-weight:700'>20.6%</span></td>
+          <td style='padding:10px 12px;text-align:right'>3.237</td>
+          <td style='padding:10px 12px;text-align:right'>144</td>
+        </tr></tbody>
+        </table>
+      </div>
+    </section>
+      <section class='card'>
+      <h2>📈 Estimación de Consumo por Usuario</h2>
+      <p class='subtitle'>Cálculo de consumo relativo usando datos agregados de la organización.</p>
+      
+      <div class='kpi-grid' style='margin-bottom:24px'>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>👤</div>
+          <div class='kpi-value'>27</div>
+          <div class='kpi-label'>Usuarios Activos (7 días)</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>✅</div>
+          <div class='kpi-value'>2.349</div>
+          <div class='kpi-label'>Aceptaciones Totales</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>💬</div>
+          <div class='kpi-value'>4.940</div>
+          <div class='kpi-label'>Conversaciones Totales</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>📊</div>
+          <div class='kpi-value'>269.96</div>
+          <div class='kpi-label'>Consumo por Usuario</div>
+        </div>
+      </div>
+
+      <div style='background:#f6f8fa; border-radius:8px; padding:16px; margin-bottom:16px; border-left:4px solid #0969da'>
+        <p style='font-size:13px; line-height:1.8; color:#57606a; font-family:monospace'>
+          <strong>Fórmula utilizada:</strong><br>
+          Consumo relativo = (aceptaciones + chats) ÷ usuarios_activos<br>
+          Consumo relativo = (2349 + 4940) ÷ 27 = <strong style='color:#0969da;font-size:15px'>269.96</strong>
+        </p>
+      </div>
+
+      <div style='font-size:13px; line-height:1.6; color:#57606a'>
+        <p><strong>Interpretación:</strong></p>
+        <p style='margin-top:8px'>En los últimos 30 días, cada usuario activo generó o participó en un promedio de <strong>269.96 interacciones</strong> (aceptaciones de sugerencias + conversaciones de chat). Este es el proxy más cercano disponible en la API de GitHub para estimar consumo relativo, ya que no se exponen tokens de LLM por usuario.</p>
+        <p style='margin-top:8px'><em>Nota:</em> Las métricas de uso están agregadas a nivel organización. Un consumo más alto puede indicar mayor adopción de Copilot y mejores prácticas de pair programming con IA.</p>
+      </div>
+    </section>
+      <section class='card'>
+      <h2>💵 Estimación de Costo por Usuario (USD)</h2>
+      <p class='subtitle'>Modelo de asignación contable para management: combina costo base por licencia y componente variable por uso.</p>
+
+      <div class='kpi-grid' style='margin-bottom:16px'>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>🏷️</div>
+          <div class='kpi-value'>USD 19,00</div>
+          <div class='kpi-label'>Precio Licencia Mensual</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>📦</div>
+          <div class='kpi-value'>USD 589,00</div>
+          <div class='kpi-label'>Costo Org Mensual (Seats x Precio)</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>🗓️</div>
+          <div class='kpi-value'>USD 549,73</div>
+          <div class='kpi-label'>Costo Prorrateado del Período (28 días)</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>⚖️</div>
+          <div class='kpi-value'>30%</div>
+          <div class='kpi-label'>Peso Variable por Uso</div>
+        </div>
+      </div>
+
+      <div style='background:#f6f8fa; border-radius:8px; padding:14px; border-left:4px solid #0969da; margin-bottom:14px'>
+        <p style='font-size:13px; line-height:1.7'>
+          <strong>Fórmula de asignación (no facturación oficial por usuario):</strong><br>
+          Costo usuario = Base + Variable<br>
+          Base = (Costo período × 70 %) / seats<br>
+          Variable = (Costo período × 30 %) × (interacciones_usuario / interacciones_totales)
+        </p>
+      </div>
+
+      <div style='overflow-x:auto'>
+        <table>
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Aceptaciones</th>
+              <th>Chats</th>
+              <th>Interacciones</th>
+              <th>USD Base</th>
+              <th>USD Variable</th>
+              <th>USD Estimado</th>
+            </tr>
+          </thead>
+          <tbody>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>rodrigoanti</td>
+          <td style='padding:10px 12px;text-align:right'>731</td>
+          <td style='padding:10px 12px;text-align:right'>591</td>
+          <td style='padding:10px 12px;text-align:right'>1.322</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 27,44</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 39,85</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>saulCleverit</td>
+          <td style='padding:10px 12px;text-align:right'>172</td>
+          <td style='padding:10px 12px;text-align:right'>395</td>
+          <td style='padding:10px 12px;text-align:right'>567</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 11,77</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 24,18</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>RamsesMatosCleverIT</td>
+          <td style='padding:10px 12px;text-align:right'>4</td>
+          <td style='padding:10px 12px;text-align:right'>492</td>
+          <td style='padding:10px 12px;text-align:right'>496</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 10,30</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 22,71</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>pmunoz-clever</td>
+          <td style='padding:10px 12px;text-align:right'>54</td>
+          <td style='padding:10px 12px;text-align:right'>391</td>
+          <td style='padding:10px 12px;text-align:right'>445</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 9,24</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 21,65</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>egarvisocleverit</td>
+          <td style='padding:10px 12px;text-align:right'>304</td>
+          <td style='padding:10px 12px;text-align:right'>126</td>
+          <td style='padding:10px 12px;text-align:right'>430</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 8,93</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 21,34</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>cceballos-clever</td>
+          <td style='padding:10px 12px;text-align:right'>28</td>
+          <td style='padding:10px 12px;text-align:right'>381</td>
+          <td style='padding:10px 12px;text-align:right'>409</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 8,49</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 20,90</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>jblancoclever</td>
+          <td style='padding:10px 12px;text-align:right'>12</td>
+          <td style='padding:10px 12px;text-align:right'>371</td>
+          <td style='padding:10px 12px;text-align:right'>383</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 7,95</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 20,36</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>karluiz</td>
+          <td style='padding:10px 12px;text-align:right'>214</td>
+          <td style='padding:10px 12px;text-align:right'>160</td>
+          <td style='padding:10px 12px;text-align:right'>374</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 7,76</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 20,17</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>rtraidcleverit</td>
+          <td style='padding:10px 12px;text-align:right'>52</td>
+          <td style='padding:10px 12px;text-align:right'>269</td>
+          <td style='padding:10px 12px;text-align:right'>321</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 6,66</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 19,07</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>westupinanm</td>
+          <td style='padding:10px 12px;text-align:right'>73</td>
+          <td style='padding:10px 12px;text-align:right'>242</td>
+          <td style='padding:10px 12px;text-align:right'>315</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 6,54</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 18,95</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>EAliatis</td>
+          <td style='padding:10px 12px;text-align:right'>227</td>
+          <td style='padding:10px 12px;text-align:right'>46</td>
+          <td style='padding:10px 12px;text-align:right'>273</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 5,67</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 18,08</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>drpc007</td>
+          <td style='padding:10px 12px;text-align:right'>4</td>
+          <td style='padding:10px 12px;text-align:right'>229</td>
+          <td style='padding:10px 12px;text-align:right'>233</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 4,84</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 17,25</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>max-ang</td>
+          <td style='padding:10px 12px;text-align:right'>219</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>219</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 4,55</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 16,96</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>jsusran</td>
+          <td style='padding:10px 12px;text-align:right'>16</td>
+          <td style='padding:10px 12px;text-align:right'>190</td>
+          <td style='padding:10px 12px;text-align:right'>206</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 4,28</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 16,69</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>macmoi</td>
+          <td style='padding:10px 12px;text-align:right'>14</td>
+          <td style='padding:10px 12px;text-align:right'>191</td>
+          <td style='padding:10px 12px;text-align:right'>205</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 4,26</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 16,67</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>santiigerace</td>
+          <td style='padding:10px 12px;text-align:right'>2</td>
+          <td style='padding:10px 12px;text-align:right'>176</td>
+          <td style='padding:10px 12px;text-align:right'>178</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 3,69</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 16,10</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>gberlot-clever</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>165</td>
+          <td style='padding:10px 12px;text-align:right'>166</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 3,45</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 15,86</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>atrucco-clever</td>
+          <td style='padding:10px 12px;text-align:right'>2</td>
+          <td style='padding:10px 12px;text-align:right'>131</td>
+          <td style='padding:10px 12px;text-align:right'>133</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 2,76</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 15,17</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>cmunoz18</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>119</td>
+          <td style='padding:10px 12px;text-align:right'>120</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 2,49</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 14,90</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>medinaj5455</td>
+          <td style='padding:10px 12px;text-align:right'>7</td>
+          <td style='padding:10px 12px;text-align:right'>60</td>
+          <td style='padding:10px 12px;text-align:right'>67</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 1,39</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 13,80</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>munozd5125</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>43</td>
+          <td style='padding:10px 12px;text-align:right'>43</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,89</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 13,30</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>LBrieva</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>25</td>
+          <td style='padding:10px 12px;text-align:right'>26</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,54</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,95</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>daruinleonscig</td>
+          <td style='padding:10px 12px;text-align:right'>10</td>
+          <td style='padding:10px 12px;text-align:right'>15</td>
+          <td style='padding:10px 12px;text-align:right'>25</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,52</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,93</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>WilRodAcero</td>
+          <td style='padding:10px 12px;text-align:right'>2</td>
+          <td style='padding:10px 12px;text-align:right'>16</td>
+          <td style='padding:10px 12px;text-align:right'>18</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,37</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,78</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>jpabarcaor</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>3</td>
+          <td style='padding:10px 12px;text-align:right'>3</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,06</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,47</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>WillClever</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,02</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,43</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>EduardoPmx-CleverIt</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>1</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,02</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,43</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>fhormazabalcleverit</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,00</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,41</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>fasclever</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,00</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,41</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>escodevdo</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,00</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,41</td>
+        </tr>        <tr>
+          <td style='padding:10px 12px;font-weight:600'>diegopintog</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>0</td>
+          <td style='padding:10px 12px;text-align:right'>USD 12,41</td>
+          <td style='padding:10px 12px;text-align:right'>USD 0,00</td>
+          <td style='padding:10px 12px;text-align:right;font-weight:700;color:#0969da'>USD 12,41</td>
+        </tr></tbody>
+        </table>
+      </div>
+      
+    </section>
+      <section class='card'>
+      <h2>🛡️ Auditoría de Ejecución (Solo Lectura)</h2>
+      <p class='subtitle'>Evidencia técnica para compliance: este script usa exclusivamente operaciones HTTP GET.</p>
+
+      <div class='kpi-grid' style='margin-bottom:16px'>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>🌐</div>
+          <div class='kpi-value'>9</div>
+          <div class='kpi-label'>Llamadas HTTP Totales</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>✅</div>
+          <div class='kpi-value'>9</div>
+          <div class='kpi-label'>GET Exitosas</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>⚠️</div>
+          <div class='kpi-value'>0</div>
+          <div class='kpi-label'>GET con Error</div>
+        </div>
+        <div class='kpi-card'>
+          <div class='kpi-icon'>🔒</div>
+          <div class='kpi-value'>0</div>
+          <div class='kpi-label'>Operaciones de Escritura</div>
+        </div>
+      </div>
+
+      <div class='warning' style='margin-bottom:14px'>
+        <strong>Resultado de auditoría:</strong> Operaciones de escritura (POST/PUT/PATCH/DELETE) = <strong>0</strong>. Valor esperado para este script: <strong>0</strong>.
+      </div>
+
+      <div style='overflow-x:auto'>
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Método</th>
+              <th>Endpoint</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:21</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/user</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:21</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/user/memberships/orgs/CleveritDemo</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:22</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/orgs/CleveritDemo</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:22</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/orgs/CleveritDemo/copilot/billing</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:23</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/orgs/CleveritDemo/copilot/billing/seats</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:23</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/orgs/CleveritDemo/copilot/metrics/reports/organization-28-day/latest</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:24</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://copilot-reports.github.com/organization-28-day-report/etl_id=green/day_partition=2026-06-01/entity_id_partition=91289201/part-00160-de649a8f-5e08-48a5-9c1e-53794b40c2f7.c000.json</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:24</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://api.github.com/orgs/CleveritDemo/copilot/metrics/reports/users-28-day/latest</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr>        <tr>
+          <td style='padding:8px 10px'>2026-06-02 17:16:25</td>
+          <td style='padding:8px 10px;text-align:center'><code>GET</code></td>
+          <td style='padding:8px 10px'><code style='font-size:12px'>https://copilot-reports.github.com/organization-users-28-day-report/etl_id=green/day_partition=2026-06-01/entity_id_partition=91289201/part-00160-e96964b8-011e-4b52-896b-efd33e1e1c9e.c000.json</code></td>
+          <td style='padding:8px 10px;text-align:center'><span style='color:#28a745;font-weight:700'>OK (200)</span></td>
+        </tr></tbody>
+        </table>
+      </div>
+      <p class='subtitle' style='margin-top:10px'>Se muestran hasta 25 llamadas recientes. Los links firmados se enmascaran sin query string para seguridad.</p>
+    </section>
+      <section class='card note'>
+      <h2>📋 Nota Metodológica</h2>
+      <ul>
+        <li><strong>Fuente de datos:</strong> GitHub Copilot Usage Metrics Reports API (v2026-03-10) y Billing Seats API.</li>
+        <li><strong>Período analizado:</strong> 2026-05-05 al 2026-06-01 (últimos 30 días).</li>
+        <li><strong>Tokens quemados:</strong> La API de GitHub Copilot <em>no expone tokens de LLM por usuario</em>. Las métricas disponibles son: sugerencias, aceptaciones, líneas y chats.</li>
+        <li><strong>Actividad por usuario:</strong> El campo <code>last_activity_at</code> de cada seat es el proxy más preciso disponible. Las métricas de uso (sugerencias/chats) son <em>agregadas a nivel organización</em>, no desglosadas por usuario individual.</li>
+        <li><strong>Tasa de aceptación:</strong> Principal KPI de efectividad. Un valor ≥ 30% se considera excelente en la industria.</li>
+        <li><strong>Consolidación:</strong> El script descarga todos los <code>download_links</code> de reportes de organización y usuarios, y consolida los días en un único dataset.</li>
+        <li><strong>Seguridad:</strong> El script ejecuta únicamente operaciones HTTP <code>GET</code> (solo lectura). No modifica configuración, licencias ni usuarios de la organización.</li>
+        <li><strong>Estimación de consumo:</strong> Se calcula como (aceptaciones + chats) ÷ usuarios_activos. Esta es la <em>alternativa viable</em> más cercana para estimar consumo por usuario cuando no hay datos de tokens de LLM disponibles en la API.</li>
+      </ul>
+    </section>
+</main>
+
+<footer>
+  Reporte generado automáticamente por copilot-report.ps1 · GitHub Copilot Usage Metrics Reports API v2026-03-10
+</footer>
+
+</body>
+</html>
