@@ -1,126 +1,171 @@
-# 📝 ToDo List App – Fullstack PoC
+# 🧠 ToDo List App - Advanced Technical Documentation
 
-This repository provides a fullstack ToDo List application for hands-on learning and rapid prototyping. It is suitable for Developers, Sysadmins, DevOps, and Cloud Engineers interested in containerized app architectures.
-
----
-
-## ⚙️ Runtimes & Frameworks
-
-### Backend
-- **Runtime:** Node.js (LTS recommended)
-- **Framework:** Express.js
-- **Persistence:** Filesystem (`tasks.json`)
-
-### Frontend
-- **Runtime:** Nginx (production/static serving)
-- **Languages:** HTML5, CSS3, Vanilla JavaScript
-
-### Containerization
-- **Docker:** Multi-service orchestration via Docker Compose
+Este repositorio implementa una aplicacion fullstack orientada a escenarios de aprendizaje y pruebas operativas para equipos de desarrollo y plataforma. La solucion expone una API REST con Node.js/Express y una interfaz web statica servida por Nginx, orquestadas mediante Docker Compose. 🚀
 
 ---
 
-## 📦 Project Structure
+## 🎯 Publico Objetivo
 
-```
-copilot-agentic-demo/
-├── backend/        # Node.js + Express REST API
+- 👩‍💻 Developers: implementacion de features CRUD y consumo de API REST.
+- 🖥️ Sysadmins: operacion de contenedores, puertos y persistencia local.
+- ⚙️ DevOps Engineers: flujo de build/run, troubleshooting y automatizacion.
+- ☁️ Cloud Engineers: base para contenerizacion y despliegue en plataformas cloud.
+
+---
+
+## 🧩 Runtimes, Frameworks y Componentes
+
+### Backend API
+
+- Runtime: Node.js 20 (imagen `node:20-alpine` en Docker).
+- Framework: Express.js 4.x.
+- Librerias principales:
+  - `cors` para CORS.
+  - `uuid` para identificadores unicos de tareas.
+- Persistencia: archivo JSON local (`backend/data/tasks.json`).
+
+### Frontend Web
+
+- Runtime de serving: Nginx Alpine (`nginx:alpine`).
+- Stack cliente: HTML5 + CSS3 + Vanilla JavaScript.
+- Comunicacion: fetch API hacia `http://localhost:3000/api/tasks`.
+
+### Orquestacion y Contenedores
+
+- Docker Compose para levantar servicios `backend` y `frontend`.
+- Red de Compose compartida para comunicacion entre contenedores.
+- Volumen bind mount para persistencia de datos del backend:
+  - `./backend/data:/app/data`
+
+---
+
+## 🗂️ Estructura Tecnica del Proyecto
+
+```text
+copilot-agentic-workshop/
+├── backend/
 │   ├── controllers/
+│   │   └── tasksController.js
 │   ├── data/
+│   │   └── tasks.json
 │   ├── routes/
+│   │   └── tasks.js
+│   ├── Dockerfile
+│   ├── docker-entrypoint.sh
 │   ├── index.js
-│   └── Dockerfile
-├── frontend/       # Vanilla JS web client, served by Nginx
+│   └── package.json
+├── frontend/
+│   ├── Dockerfile
 │   ├── index.html
 │   ├── script.js
-│   ├── style.css
-│   └── Dockerfile
+│   └── style.css
 ├── docker-compose.yml
-└── README.md
+└── about.md
 ```
 
 ---
 
-## 🚀 How to Run the Project
+## ▶️ Ejecucion Detallada del Proyecto
 
-### Prerequisites
-- Docker and Docker Compose installed
-- Modern browser (Chrome, Firefox, Edge, Safari)
+### 1) Prerrequisitos
 
-### Clone the Repository
+- Docker Desktop o Docker Engine + Docker Compose plugin.
+- Git CLI.
+- Navegador moderno (Edge, Chrome, Firefox, Safari). 🌐
+
+### 2) Clonar repositorio
+
 ```bash
-git clone https://github.com/CleveritDemo/copilot-agentic-demo.git
-cd copilot-agentic-demo
+git clone https://github.com/CleveritDemo/copilot-agentic-workshop.git
+cd copilot-agentic-workshop
 ```
 
-### Build & Start Services
+### 3) Build y arranque de servicios
+
+Comando recomendado (Compose v2):
+
 ```bash
-docker-compose up --build
-```
-- Backend API: port **3000**
-- Frontend (Nginx): port **8080**
-
-### Access the Application
-
-#### Frontend UI
-- [http://localhost:8080](http://localhost:8080)
-
-#### Backend API
-- [http://localhost:3000/api/tasks](http://localhost:3000/api/tasks)
-- Supports CRUD operations (GET, POST, PUT, DELETE)
-
----
-
-## Advanced Usage & Customization
-
-- **Hot Reload (Dev):** Run backend locally with `node backend/index.js`
-- **Direct Frontend Access:** Open `frontend/index.html` for static preview
-- **Volumes:** Backend mounts `backend/data` for persistent storage
-- **Environment Variables:** Customize via Docker Compose or `.env` files
-
----
-
-## Docker Ignore Files
-
-### backend/.dockerignore
-```dockerignore
-node_modules
-npm-debug.log
-.DS_Store
-data/*.json.backup
-*.env
-*.log
+docker compose up --build
 ```
 
-### frontend/.dockerignore
-```dockerignore
-.DS_Store
-*.log
-node_modules
-npm-debug.log
-*.env
+Si deseas correr en background:
+
+```bash
+docker compose up --build -d
+```
+
+### 4) Verificacion operativa
+
+Inspeccion de estado:
+
+```bash
+docker compose ps
+```
+
+Ver logs:
+
+```bash
+docker compose logs -f backend
+docker compose logs -f frontend
+```
+
+### 5) Detener servicios
+
+```bash
+docker compose down
 ```
 
 ---
 
-## 📂 Additional Notes
+## 🌐 Acceso desde Navegador y Endpoints
 
-- Backend mounts `backend/data` for persistent task storage
-- Frontend is served via Nginx for production; static preview via direct file open
-- Security, performance, and container best practices recommended for production
+### Frontend UI
+
+- URL: http://localhost:8080
+- Funcion: interfaz de tareas (crear, listar, completar, eliminar).
+
+### Backend API
+
+- Base URL: http://localhost:3000/api/tasks
+- Operaciones:
+  - `GET /api/tasks` -> listar tareas
+  - `POST /api/tasks` -> crear tarea
+  - `PUT /api/tasks/:id` -> actualizar tarea
+  - `DELETE /api/tasks/:id` -> eliminar tarea
+
+Ejemplo de prueba rapida:
+
+```bash
+curl http://localhost:3000/api/tasks
+```
 
 ---
 
-## 👨‍💻 Target Audience
+## 🛠️ Consideraciones Operativas (DevOps/SRE)
 
-- Developers building fullstack apps
-- Sysadmins managing containerized services
-- DevOps automating deployments
-- Cloud Engineers architecting scalable solutions
+- Persistencia: el bind mount de `backend/data` conserva tareas entre reinicios del contenedor.
+- Reinicio automatico del backend: `restart: always` en Compose.
+- Resolucion de problemas de cache (build):
+
+```bash
+docker compose down
+docker compose build --no-cache
+docker compose up -d
+```
+
+- Nota Compose: la clave `version` en `docker-compose.yml` puede mostrar warning de obsolescencia en Compose v2; no bloquea la ejecucion.
 
 ---
 
-## 📬 Support & Contributions
+## 🔒 Recomendaciones para Entornos Productivos
 
-- For issues or contributions, use the [Issues tab](https://github.com/CleveritDemo/copilot-agentic-demo/issues)
+- Exponer servicios detras de reverse proxy con TLS (Nginx/Traefik/Ingress).
+- Incorporar observabilidad: logs estructurados, health checks y metricas.
+- Sustituir persistencia en archivo por almacenamiento transaccional (DB gestionada).
+- Implementar hardening de imagenes y escaneo de vulnerabilidades en CI/CD.
 
+---
+
+## 📬 Soporte y Evolucion
+
+Para mejoras y nuevas funcionalidades, utilizar Issues del repositorio y mantener trazabilidad tecnica de cambios por feature. ✨
