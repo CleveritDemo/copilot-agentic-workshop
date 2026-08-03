@@ -3,6 +3,8 @@ const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
 const themeToggle = document.getElementById('themeToggle');
+const taskSearch = document.getElementById('taskSearch');
+let allTasks = [];
 
 // Theme functionality
 function initTheme() {
@@ -29,9 +31,8 @@ initTheme();
 
 async function fetchTasks() {
   const res = await fetch(API_URL);
-  const tasks = await res.json();
-  taskList.innerHTML = '';
-  tasks.forEach(addTaskToDOM);
+  allTasks = await res.json();
+  renderTasks();
 }
 
 function addTaskToDOM(task) {
@@ -46,6 +47,16 @@ function addTaskToDOM(task) {
   taskList.appendChild(li);
 }
 
+function renderTasks() {
+  const filterText = taskSearch.value.trim().toLowerCase();
+  taskList.innerHTML = '';
+  allTasks
+    .filter(task => task.title.toLowerCase().includes(filterText))
+    .forEach(addTaskToDOM);
+}
+
+taskSearch.addEventListener('input', renderTasks);
+
 taskForm.addEventListener('submit', async e => {
   e.preventDefault();
   const title = taskInput.value;
@@ -55,7 +66,8 @@ taskForm.addEventListener('submit', async e => {
     body: JSON.stringify({ title })
   });
   const task = await res.json();
-  addTaskToDOM(task);
+  allTasks.push(task);
+  renderTasks();
   taskInput.value = '';
 });
 
