@@ -36,14 +36,69 @@ async function fetchTasks() {
 
 function addTaskToDOM(task) {
   const li = document.createElement('li');
+  li.dataset.id = task.id;
   li.innerHTML = `
     <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
     <div>
+      <button onclick="editTask('${task.id}', this)" title="Edit task">✎</button>
       <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
       <button onclick="deleteTask('${task.id}')">✕</button>
     </div>
   `;
   taskList.appendChild(li);
+}
+
+function editTask(id, btn) {
+  const li = btn.closest('li');
+  const span = li.querySelector('span');
+  const currentTitle = span.textContent;
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = currentTitle;
+  input.className = 'edit-input';
+
+  const saveBtn = document.createElement('button');
+  saveBtn.textContent = '💾';
+  saveBtn.className = 'save-btn';
+  saveBtn.title = 'Save changes';
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.textContent = '✕';
+  cancelBtn.title = 'Cancel editing';
+
+  async function save() {
+    const newTitle = input.value.trim();
+    if (!newTitle) {
+      input.classList.add('input-error');
+      input.focus();
+      return;
+    }
+    await fetch(`${API_URL}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: newTitle })
+    });
+    fetchTasks();
+  }
+
+  function cancel() {
+    fetchTasks();
+  }
+
+  saveBtn.addEventListener('click', save);
+  cancelBtn.addEventListener('click', cancel);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') save();
+    if (e.key === 'Escape') cancel();
+  });
+
+  const div = li.querySelector('div');
+  li.replaceChild(input, span);
+  div.innerHTML = '';
+  div.appendChild(saveBtn);
+  div.appendChild(cancelBtn);
+  input.focus();
 }
 
 taskForm.addEventListener('submit', async e => {
