@@ -2,21 +2,25 @@
   {
     "id": "9ea58d82-c0c1-4553-916d-1f5369989fbd",
     "title": "ejemplo",
-    "completed": false
+    "completed": false,
+    "category": "Medium"
   },
   {
     "id": "0d851d4e-8238-449e-b490-d0692317808e",
     "title": "rodrigo",
-    "completed": false
+    "completed": false,
+    "category": "Medium"
   },
   {
     "id": "2d0f502d-86f8-49c8-991e-718dd7fbe742",
     "title": "traid",
-    "completed": false
+    "completed": false,
+    "category": "Medium"
   },
   {
     "id": "fd45d9dc-b4a7-405d-a3d5-55f70d825d51",
     "title": "forum",
-    "completed": false
+    "completed": false,
+    "category": "Medium"
   }
 ]

@@ -3,6 +3,7 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const filePath = path.join(__dirname, '../data/tasks.json');
+const ALLOWED_CATEGORIES = ['Low', 'Medium', 'High'];
 
 function readTasks() {
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
@@ -18,8 +19,13 @@ exports.getAllTasks = (req, res) => {
 
 exports.createTask = (req, res) => {
   const tasks = readTasks();
-  const { title, completed = false } = req.body;
-  const newTask = { id: uuidv4(), title, completed };
+  const { title, completed = false, category = 'Medium' } = req.body;
+
+  if (!ALLOWED_CATEGORIES.includes(category)) {
+    return res.status(400).json({ message: 'Invalid category' });
+  }
+
+  const newTask = { id: uuidv4(), title, completed, category };
   tasks.push(newTask);
   writeTasks(tasks);
   res.status(201).json(newTask);
@@ -29,6 +35,13 @@ exports.updateTask = (req, res) => {
   const tasks = readTasks();
   const task = tasks.find(t => t.id === req.params.id);
   if (!task) return res.status(404).json({ message: 'Task not found' });
+
+  if (req.body.category !== undefined) {
+    if (!ALLOWED_CATEGORIES.includes(req.body.category)) {
+      return res.status(400).json({ message: 'Invalid category' });
+    }
+    task.category = req.body.category;
+  }
 
   task.title = req.body.title ?? task.title;
   task.completed = req.body.completed ?? task.completed;
