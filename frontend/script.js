@@ -2,7 +2,9 @@ const API_URL = 'http://localhost:3000/api/tasks';
 const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
+const taskFilter = document.getElementById('taskFilter');
 const themeToggle = document.getElementById('themeToggle');
+let currentTasks = [];
 
 // Theme functionality
 function initTheme() {
@@ -29,9 +31,16 @@ initTheme();
 
 async function fetchTasks() {
   const res = await fetch(API_URL);
-  const tasks = await res.json();
+  currentTasks = await res.json();
+  renderTasks();
+}
+
+function renderTasks() {
+  const filterValue = taskFilter.value.trim().toLowerCase();
   taskList.innerHTML = '';
-  tasks.forEach(addTaskToDOM);
+  currentTasks
+    .filter(task => task.title.toLowerCase().includes(filterValue))
+    .forEach(addTaskToDOM);
 }
 
 function addTaskToDOM(task) {
@@ -55,9 +64,12 @@ taskForm.addEventListener('submit', async e => {
     body: JSON.stringify({ title })
   });
   const task = await res.json();
-  addTaskToDOM(task);
+  currentTasks.push(task);
+  renderTasks();
   taskInput.value = '';
 });
+
+taskFilter.addEventListener('input', renderTasks);
 
 async function toggleComplete(id, completed) {
   await fetch(`${API_URL}/${id}`, {
