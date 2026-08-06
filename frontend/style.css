@@ -189,3 +189,61 @@ li button:active {
     padding: 0.75em 0.5em;
   }
 }
+
+#categorySelect {
+  padding: 0.75em 0.5em;
+  border: none;
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  box-shadow: 0 1px 2px var(--input-shadow);
+  font-size: 1em;
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+#categorySelect:focus {
+  box-shadow: 0 2px 8px var(--input-focus-shadow);
+}
+
+.category-badge {
+  font-size: 0.75em;
+  font-weight: 500;
+  padding: 0.2em 0.65em;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0.5em;
+  flex-shrink: 0;
+}
+
+.category-low {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.category-medium {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.category-high {
+  background-color: #fce4ec;
+  color: #c62828;
+}
+
+[data-theme="dark"] .category-low {
+  background-color: #1b5e20;
+  color: #a5d6a7;
+}
+
+[data-theme="dark"] .category-medium {
+  background-color: #bf360c;
+  color: #ffcc80;
+}
+
+[data-theme="dark"] .category-high {
+  background-color: #880e4f;
+  color: #f48fb1;
+}
