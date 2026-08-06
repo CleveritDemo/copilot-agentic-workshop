@@ -36,14 +36,65 @@ async function fetchTasks() {
 
 function addTaskToDOM(task) {
   const li = document.createElement('li');
+  li.setAttribute('data-id', task.id);
   li.innerHTML = `
     <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
     <div>
+      <button onclick="editTask('${task.id}', this)" title="Edit task title">✎</button>
       <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
       <button onclick="deleteTask('${task.id}')">✕</button>
     </div>
   `;
   taskList.appendChild(li);
+}
+
+function editTask(id, btn) {
+  const li = document.querySelector(`li[data-id="${id}"]`);
+  const span = li.querySelector('span');
+  const currentTitle = span.textContent;
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = currentTitle;
+  input.className = 'edit-input';
+
+  span.replaceWith(input);
+  input.focus();
+  input.select();
+
+  btn.textContent = '💾';
+  btn.setAttribute('onclick', `saveTask('${id}', this)`);
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') saveTask(id, btn);
+    if (e.key === 'Escape') fetchTasks();
+  });
+}
+
+async function saveTask(id, btn) {
+  const li = document.querySelector(`li[data-id="${id}"]`);
+  const input = li.querySelector('input.edit-input');
+  const newTitle = input.value.trim();
+
+  if (!newTitle) {
+    input.classList.add('edit-input--error');
+    input.focus();
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_URL}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: newTitle })
+    });
+    if (!res.ok) throw new Error('Failed to update task');
+    fetchTasks();
+  } catch (err) {
+    input.classList.add('edit-input--error');
+    input.title = 'Could not save changes. Please try again.';
+    input.focus();
+  }
 }
 
 taskForm.addEventListener('submit', async e => {
