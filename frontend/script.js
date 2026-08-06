@@ -3,6 +3,9 @@ const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
 const themeToggle = document.getElementById('themeToggle');
+const searchInput = document.getElementById('searchInput');
+
+let allTasks = [];
 
 // Theme functionality
 function initTheme() {
@@ -27,11 +30,23 @@ themeToggle.addEventListener('click', toggleTheme);
 // Initialize theme on page load
 initTheme();
 
-async function fetchTasks() {
-  const res = await fetch(API_URL);
-  const tasks = await res.json();
+function renderTasks(tasks) {
   taskList.innerHTML = '';
   tasks.forEach(addTaskToDOM);
+}
+
+function filterTasks() {
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = allTasks.filter(task =>
+    task.title.toLowerCase().includes(query)
+  );
+  renderTasks(filtered);
+}
+
+async function fetchTasks() {
+  const res = await fetch(API_URL);
+  allTasks = await res.json();
+  filterTasks();
 }
 
 function addTaskToDOM(task) {
@@ -46,6 +61,8 @@ function addTaskToDOM(task) {
   taskList.appendChild(li);
 }
 
+searchInput.addEventListener('input', filterTasks);
+
 taskForm.addEventListener('submit', async e => {
   e.preventDefault();
   const title = taskInput.value;
@@ -55,7 +72,9 @@ taskForm.addEventListener('submit', async e => {
     body: JSON.stringify({ title })
   });
   const task = await res.json();
-  addTaskToDOM(task);
+  allTasks.push(task);
+  searchInput.value = '';
+  filterTasks();
   taskInput.value = '';
 });
 
