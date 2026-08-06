@@ -1,7 +1,9 @@
 const API_URL = 'http://localhost:3000/api/tasks';
+const DEFAULT_CATEGORY = 'Medium';
 const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 const taskInput = document.getElementById('taskInput');
+const taskCategory = document.getElementById('taskCategory');
 const themeToggle = document.getElementById('themeToggle');
 
 // Theme functionality
@@ -35,28 +37,54 @@ async function fetchTasks() {
 }
 
 function addTaskToDOM(task) {
+  const category = task.category || DEFAULT_CATEGORY;
   const li = document.createElement('li');
-  li.innerHTML = `
-    <span class="${task.completed ? 'completed' : ''}">${task.title}</span>
-    <div>
-      <button onclick="toggleComplete('${task.id}', ${!task.completed})">✓</button>
-      <button onclick="deleteTask('${task.id}')">✕</button>
-    </div>
-  `;
+  const taskContent = document.createElement('div');
+  taskContent.className = 'task-content';
+
+  const title = document.createElement('span');
+  title.className = `task-title ${task.completed ? 'completed' : ''}`;
+  title.textContent = task.title;
+
+  const badge = document.createElement('span');
+  badge.className = `category-badge category-${category.toLowerCase()}`;
+  badge.textContent = category;
+
+  const actions = document.createElement('div');
+
+  const completeButton = document.createElement('button');
+  completeButton.textContent = '✓';
+  completeButton.setAttribute('aria-label', task.completed ? 'Mark task as incomplete' : 'Mark task as complete');
+  completeButton.addEventListener('click', () => toggleComplete(task.id, !task.completed));
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = '✕';
+  deleteButton.setAttribute('aria-label', 'Delete task');
+  deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+  taskContent.appendChild(title);
+  taskContent.appendChild(badge);
+  actions.appendChild(completeButton);
+  actions.appendChild(deleteButton);
+  li.appendChild(taskContent);
+  li.appendChild(actions);
   taskList.appendChild(li);
 }
 
 taskForm.addEventListener('submit', async e => {
   e.preventDefault();
-  const title = taskInput.value;
+  const title = taskInput.value.trim();
+  if (!title) return;
+  const category = taskCategory.value || DEFAULT_CATEGORY;
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title })
+    body: JSON.stringify({ title, category })
   });
   const task = await res.json();
   addTaskToDOM(task);
   taskInput.value = '';
+  taskCategory.value = DEFAULT_CATEGORY;
 });
 
 async function toggleComplete(id, completed) {
