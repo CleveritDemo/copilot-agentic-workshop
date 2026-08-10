@@ -297,3 +297,5 @@ Copilot will automatically leave comments and suggestions.
 **You have reached the end of the training. Congratulations! 💫**
 
 </div>
+
+---
