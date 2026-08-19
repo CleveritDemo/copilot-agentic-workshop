@@ -5,6 +5,8 @@
   --text-color: #333;
   --primary-color: #1976d2;
   --primary-hover: #1565c0;
+  --primary-active: #0d5cad;
+  --primary-contrast: #fff;
   --input-bg: #fff;
   --task-bg: #fff;
   --task-shadow: rgba(0,0,0,0.06);
@@ -16,6 +18,7 @@
   --input-focus-shadow: rgba(25,118,210,0.15);
   --submit-shadow: rgba(25,118,210,0.08);
   --submit-hover-shadow: rgba(25,118,210,0.12);
+  --button-focus-ring: rgba(66,165,245,0.35);
 }
 
 [data-theme="dark"] {
@@ -25,17 +28,20 @@
   --text-color: #e0e0e0;
   --primary-color: #64b5f6;
   --primary-hover: #42a5f5;
+  --primary-active: #1e88e5;
+  --primary-contrast: #062033;
   --input-bg: #2d2d2d;
   --task-bg: #2d2d2d;
   --task-shadow: rgba(0,0,0,0.3);
-  --task-hover-shadow: rgba(100,181,246,0.15);
-  --button-hover-bg: #1a237e;
-  --button-active-bg: #283593;
+  --task-hover-shadow: rgba(79,195,247,0.22);
+  --button-hover-bg: rgba(79,195,247,0.18);
+  --button-active-bg: rgba(79,195,247,0.3);
   --completed-color: #757575;
   --input-shadow: rgba(0,0,0,0.2);
-  --input-focus-shadow: rgba(100,181,246,0.25);
-  --submit-shadow: rgba(100,181,246,0.15);
-  --submit-hover-shadow: rgba(100,181,246,0.25);
+  --input-focus-shadow: rgba(79,195,247,0.28);
+  --submit-shadow: rgba(79,195,247,0.22);
+  --submit-hover-shadow: rgba(129,212,250,0.3);
+  --button-focus-ring: rgba(129,212,250,0.4);
 }
 
 .header {
@@ -62,8 +68,13 @@
 
 .theme-toggle:hover {
   background: var(--primary-color);
-  color: var(--container-bg);
+  color: var(--primary-contrast);
   transform: scale(1.1);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--button-focus-ring);
 }
 
 body {
@@ -105,7 +116,7 @@ form {
 }
 button[type="submit"] {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--primary-contrast);
   border: none;
   border-radius: 4px;
   padding: 0 1.5em;
@@ -119,6 +130,16 @@ button[type="submit"]:hover {
   background: var(--primary-hover);
   box-shadow: 0 4px 12px var(--submit-hover-shadow);
 }
+
+button[type="submit"]:active {
+  background: var(--primary-active);
+}
+
+button[type="submit"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--button-focus-ring);
+}
+
 ul#taskList {
   list-style: none;
   padding: 0;
@@ -172,6 +193,12 @@ li button:hover {
 }
 li button:active {
   background: var(--button-active-bg);
+}
+
+li button:focus-visible {
+  outline: none;
+  background: var(--button-hover-bg);
+  box-shadow: 0 0 0 3px var(--button-focus-ring);
 }
 @media (max-width: 600px) {
   body {
