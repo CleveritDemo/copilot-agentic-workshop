@@ -5,6 +5,7 @@
   --text-color: #333;
   --primary-color: #1976d2;
   --primary-hover: #1565c0;
+  --primary-active: #0d5cad;
   --primary-contrast: #fff;
   --input-bg: #fff;
   --task-bg: #fff;
@@ -25,8 +26,9 @@
   --bg-color: #121212;
   --container-bg: #1e1e1e;
   --text-color: #e0e0e0;
-  --primary-color: #4fc3f7;
-  --primary-hover: #81d4fa;
+  --primary-color: #64b5f6;
+  --primary-hover: #42a5f5;
+  --primary-active: #1e88e5;
   --primary-contrast: #062033;
   --input-bg: #2d2d2d;
   --task-bg: #2d2d2d;
@@ -130,13 +132,14 @@ button[type="submit"]:hover {
 }
 
 button[type="submit"]:active {
-  background: var(--primary-color);
+  background: var(--primary-active);
 }
 
 button[type="submit"]:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px var(--button-focus-ring), 0 4px 12px var(--submit-hover-shadow);
+  box-shadow: 0 0 0 4px var(--button-focus-ring);
 }
+
 ul#taskList {
   list-style: none;
   padding: 0;
